@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbstractFoodOrder
 {
-    public class Class1
+    public class Ingredient
     {
     }
 }
