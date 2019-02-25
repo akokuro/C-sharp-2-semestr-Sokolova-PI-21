@@ -20,99 +20,35 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
         }
         public List<PlumbingViewModel> GetList()
         {
-            Console.WriteLine("get list");
-            List<PlumbingViewModel> result = new List<PlumbingViewModel>();
-            for (int i = 0; i < source.Plumbings.Count; ++i)
+            List<PlumbingViewModel> result = source.Plumbings.Select(rec => new PlumbingViewModel
             {
-                // требуется дополнительно получить список компонентов для изделия и их количество
-                List<RepairPlumbingViewModel> repairPlumbings = new List<RepairPlumbingViewModel>();
-                for (int j = 0; j < source.RepairPlumbings.Count; ++j)
-                {
-                    if (source.RepairPlumbings[j].PlumbingId == source.Plumbings[i].Id)
-                    {
-                        string PlumbingName = string.Empty;
-                        for (int k = 0; k < source.Plumbings.Count; ++k)
-                        {
-                            if (source.RepairPlumbings[j].PlumbingId == source.Plumbings[k].Id)
-                            {
-                                PlumbingName = source.Plumbings[k].PlumbingName;
-                                break;
-                            }
-                        }
-                        repairPlumbings.Add(new RepairPlumbingViewModel
-                        {
-                            Id = source.RepairPlumbings[j].Id,
-                            PlumbingId = source.RepairPlumbings[j].PlumbingId,
-                            RepairId = source.RepairPlumbings[j].RepairId,
-                            PlumbingName = PlumbingName,
-                            Count = source.RepairPlumbings[j].Count
-                        });
-                    }
-                }
-                result.Add(new PlumbingViewModel
-                {
-                    Id = source.Plumbings[i].Id,
-                    PlumbingName = source.Plumbings[i].PlumbingName
-                });
-            }
+                Id = rec.Id,
+                PlumbingName = rec.PlumbingName
+            }).ToList();
             return result;
         }
         public PlumbingViewModel GetElement(int id)
         {
-            for (int i = 0; i < source.Plumbings.Count; ++i)
+            Plumbing element = source.Plumbings.FirstOrDefault(rec => rec.Id == id);
+            if (element != null)
             {
-                // требуется дополнительно получить список компонентов для изделия и их количество
-                List<RepairPlumbingViewModel> repairPlumbings = new List<RepairPlumbingViewModel>();
-                for (int j = 0; j < source.RepairPlumbings.Count; ++j)
+                return new PlumbingViewModel
                 {
-                    if (source.RepairPlumbings[j].PlumbingId == source.Plumbings[i].Id)
-                    {
-                        string PlumbingName = string.Empty;
-                        for (int k = 0; k < source.Plumbings.Count; ++k)
-                        {
-                            if (source.RepairPlumbings[j].PlumbingId ==
-                           source.Plumbings[k].Id)
-                            {
-                                PlumbingName = source.Plumbings[k].PlumbingName;
-                                break;
-                            }
-                        }
-                        repairPlumbings.Add(new RepairPlumbingViewModel
-                        {
-                            Id = source.RepairPlumbings[j].Id,
-                            PlumbingId = source.RepairPlumbings[j].PlumbingId,
-                            RepairId = source.RepairPlumbings[j].RepairId,
-                            PlumbingName = PlumbingName,
-                            Count = source.RepairPlumbings[j].Count
-                        });
-                    }
-                }
-                if (source.Plumbings[i].Id == id)
-                {
-                    return new PlumbingViewModel
-                    {
-                        Id = source.Plumbings[i].Id,
-                        PlumbingName = source.Plumbings[i].PlumbingName
-                    };
-                }
+                    Id = element.Id,
+                    PlumbingName = element.PlumbingName
+                };
             }
             throw new Exception("Элемент не найден");
         }
 
         public void AddElement(PlumbingBindingModel model)
         {
-            int maxId = 0;
-            for (int i = 0; i < source.Plumbings.Count; ++i)
+            Plumbing element = source.Plumbings.FirstOrDefault(rec => rec.PlumbingName == model.PlumbingName);
+            if (element != null)
             {
-                if (source.Plumbings[i].Id > maxId)
-                {
-                    maxId = source.Plumbings[i].Id;
-                }
-                if (source.Plumbings[i].PlumbingName == model.PlumbingName)
-                {
-                    throw new Exception("Уже есть клиент с таким ФИО");
-                }
+                throw new Exception("Уже есть клиент с таким ФИО");
             }
+            int maxId = source.Plumbings.Count > 0 ? source.Plumbings.Max(rec => rec.Id) : 0;
             source.Plumbings.Add(new Plumbing
             {
                 Id = maxId + 1,
@@ -122,37 +58,30 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
 
         public void UpdElement(PlumbingBindingModel model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Plumbings.Count; ++i)
+            Plumbing element = source.Plumbings.FirstOrDefault(rec => rec.PlumbingName == model.PlumbingName && rec.Id != model.Id);
+            if (element != null)
             {
-                if (source.Plumbings[i].Id == model.Id)
-                {
-                    index = i;
-                }
-                if (source.Plumbings[i].PlumbingName == model.PlumbingName &&
-                source.Plumbings[i].Id != model.Id)
-                {
-                    throw new Exception("Уже есть клиент с таким ФИО");
-                }
+                throw new Exception("Уже есть сантехника с таким названием");
             }
-            if (index == -1)
+            element = source.Plumbings.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            source.Plumbings[index].PlumbingName = model.PlumbingName;
+            element.PlumbingName = model.PlumbingName;
         }
 
         public void DelElement(int id)
         {
-            for (int i = 0; i < source.Plumbings.Count; ++i)
+            Plumbing element = source.Plumbings.FirstOrDefault(rec => rec.Id == id);
+            if (element != null)
             {
-                if (source.Plumbings[i].Id == id)
-                {
-                    source.Plumbings.RemoveAt(i);
-                    return;
-                }
+                source.Plumbings.Remove(element);
             }
-            throw new Exception("Элемент не найден");
+            else
+            {
+                throw new Exception("Элемент не найден");
+            }
         }
     }
 }

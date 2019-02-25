@@ -20,103 +20,55 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
         }
         public List<RepairViewModel> GetList()
         {
-            List<RepairViewModel> result = new List<RepairViewModel>();
-            for (int i = 0; i < source.Repairs.Count; ++i)
+            List<RepairViewModel> result = source.Repairs.Select(rec => new RepairViewModel
             {
-                // требуется дополнительно получить список компонентов для изделия и их количество
-                List<RepairPlumbingViewModel> repairPlumbings = new List<RepairPlumbingViewModel>();
-                for (int j = 0; j < source.RepairPlumbings.Count; ++j)
+                Id = rec.Id,
+                RepairName = rec.RepairName,
+                Price = rec.Price,
+                RepairPlumbings = source.RepairPlumbings.Where(recPC => recPC.RepairId == rec.Id).Select(recPC => new RepairPlumbingViewModel
                 {
-                    if (source.RepairPlumbings[j].RepairId == source.Repairs[i].Id)
-                    {
-                        string PlumbingName = string.Empty;
-                        for (int k = 0; k < source.Plumbings.Count; ++k)
-                        {
-                            if (source.RepairPlumbings[j].PlumbingId ==
-                           source.Plumbings[k].Id)
-                            {
-                                PlumbingName = source.Plumbings[k].PlumbingName;
-                                break;
-                            }
-                        }
-                        repairPlumbings.Add(new RepairPlumbingViewModel
-                        {
-                            Id = source.RepairPlumbings[j].Id,
-                            RepairId = source.RepairPlumbings[j].RepairId,
-                            PlumbingId = source.RepairPlumbings[j].PlumbingId,
-                            PlumbingName = PlumbingName,
-                            Count = source.RepairPlumbings[j].Count
-                        });
-                    }
-                }
-                result.Add(new RepairViewModel
-                {
-                    Id = source.Repairs[i].Id,
-                    RepairName = source.Repairs[i].RepairName,
-                    Price = source.Repairs[i].Price,
-                    RepairPlumbings = repairPlumbings
-                });
-            }
+                    Id = recPC.Id,
+                    RepairId = recPC.RepairId,
+                    PlumbingId = recPC.PlumbingId,
+                    PlumbingName = source.Plumbings.FirstOrDefault(recC =>
+                    recC.Id == recPC.PlumbingId)?.PlumbingName,
+                    Count = recPC.Count
+                }).ToList()
+            }).ToList();
             return result;
         }
         public RepairViewModel GetElement(int id)
         {
-            for (int i = 0; i < source.Repairs.Count; ++i)
+            Repair element = source.Repairs.FirstOrDefault(rec => rec.Id == id);
+            if (element != null)
             {
-                // требуется дополнительно получить список компонентов для изделия и их sколичество
-                List<RepairPlumbingViewModel> repairPlumbings = new List<RepairPlumbingViewModel>();
-                for (int j = 0; j < source.RepairPlumbings.Count; ++j)
+                return new RepairViewModel
                 {
-                    if (source.RepairPlumbings[j].RepairId == source.Repairs[i].Id)
+                    Id = element.Id,
+                    RepairName = element.RepairName,
+                    Price = element.Price,
+                    RepairPlumbings = source.RepairPlumbings.Where(recPC => recPC.RepairId == element.Id).Select(recPC => new RepairPlumbingViewModel
                     {
-                        string PlumbingName = string.Empty;
-                        for (int k = 0; k < source.Plumbings.Count; ++k)
-                        {
-                            if (source.RepairPlumbings[j].PlumbingId ==
-                           source.Plumbings[k].Id)
-                            {
-                                PlumbingName = source.Plumbings[k].PlumbingName;
-                                break;
-                            }
-                        }
-                        repairPlumbings.Add(new RepairPlumbingViewModel
-                        {
-                            Id = source.RepairPlumbings[j].Id,
-                            RepairId = source.RepairPlumbings[j].RepairId,
-                            PlumbingId = source.RepairPlumbings[j].PlumbingId,
-                            PlumbingName = PlumbingName,
-                            Count = source.RepairPlumbings[j].Count
-                        });
-                    }
-                }
-                if (source.Repairs[i].Id == id)
-                {
-                    return new RepairViewModel
-                    {
-                        Id = source.Repairs[i].Id,
-                        RepairName = source.Repairs[i].RepairName,
-                        Price = source.Repairs[i].Price,
-                        RepairPlumbings = repairPlumbings
-                    };
-                }
+                        Id = recPC.Id,
+                        RepairId = recPC.RepairId,
+                        PlumbingId = recPC.PlumbingId,
+                        PlumbingName = source.Plumbings.FirstOrDefault(recC => recC.Id == recPC.PlumbingId)?.PlumbingName,
+                        Count = recPC.Count
+                    }).ToList()
+                };
             }
             throw new Exception("Элемент не найден");
         }
 
         public void AddElement(RepairBindingModel model)
         {
-            int maxId = 0;
-            for (int i = 0; i < source.Repairs.Count; ++i)
+            Repair element = source.Repairs.FirstOrDefault(rec => rec.RepairName == model.RepairName);
+            if (element != null)
             {
-                if (source.Repairs[i].Id > maxId)
-                {
-                    maxId = source.Repairs[i].Id;
-                }
-                if (source.Repairs[i].RepairName == model.RepairName)
-                {
-                    throw new Exception("Уже есть изделие с таким названием");
-                }
+                throw new Exception("Уже есть изделие с таким названием");
             }
+            int maxId = source.Repairs.Count > 0 ? source.Repairs.Max(rec => rec.Id) :
+           0;
             source.Repairs.Add(new Repair
             {
                 Id = maxId + 1,
@@ -124,74 +76,95 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                 Price = model.Price
             });
             // компоненты для изделия
-            int maxPCId = 0;
-            for (int i = 0; i < source.RepairPlumbings.Count; ++i)
-            {
-                if (source.RepairPlumbings[i].Id > maxPCId)
-                {
-                    maxPCId = source.RepairPlumbings[i].Id;
-                }
-            }
+            int maxPCId = source.RepairPlumbings.Count > 0 ?
+           source.RepairPlumbings.Max(rec => rec.Id) : 0;
             // убираем дубли по компонентам
-            for (int i = 0; i < model.RepairPlumbings.Count; ++i)
-            {
-                for (int j = 1; j < model.RepairPlumbings.Count; ++j)
-                {
-                    if (model.RepairPlumbings[i].PlumbingId ==
-                    model.RepairPlumbings[j].PlumbingId)
-                    {
-                        model.RepairPlumbings[i].Count +=
-                        model.RepairPlumbings[j].Count;
-                        model.RepairPlumbings.RemoveAt(j--);
-                    }
-                }
-            }
+            var groupPlumbings = model.RepairPlumbings
+            .GroupBy(rec => rec.PlumbingId)
+           .Select(rec => new
+           {
+               PlumbingId = rec.Key,
+               Count = rec.Sum(r => r.Count)
+           });
             // добавляем компоненты
-            for (int i = 0; i < model.RepairPlumbings.Count; ++i)
+            foreach (var groupPlumbing in groupPlumbings)
             {
                 source.RepairPlumbings.Add(new RepairPlumbing
                 {
                     Id = ++maxPCId,
                     RepairId = maxId + 1,
-                    PlumbingId = model.RepairPlumbings[i].PlumbingId,
-                    Count = model.RepairPlumbings[i].Count
+                    PlumbingId = groupPlumbing.PlumbingId,
+                    Count = groupPlumbing.Count
                 });
             }
         }
-
         public void UpdElement(RepairBindingModel model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Repairs.Count; ++i)
+            Repair element = source.Repairs.FirstOrDefault(rec => rec.RepairName == model.RepairName && rec.Id != model.Id);
+            if (element != null)
             {
-                if (source.Repairs[i].Id == model.Id)
-                {
-                    index = i;
-                }
-                if (source.Repairs[i].RepairName == model.RepairName &&
-                source.Repairs[i].Id != model.Id)
-                {
-                    throw new Exception("Уже есть еда с таким названием");
-                }
+                throw new Exception("Уже есть изделие с таким названием");
             }
-            if (index == -1)
+            element = source.Repairs.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            source.Repairs[index].RepairName = model.RepairName;
+            element.RepairName = model.RepairName;
+            element.Price = model.Price;
+            int maxPCId = source.RepairPlumbings.Count > 0 ?
+           source.RepairPlumbings.Max(rec => rec.Id) : 0;
+            // обновляем существуюущие компоненты
+            var compIds = model.RepairPlumbings.Select(rec =>
+           rec.PlumbingId).Distinct();
+            var updatePlumbings = source.RepairPlumbings.Where(rec => rec.RepairId ==
+            model.Id && compIds.Contains(rec.PlumbingId));
+            foreach (var updatePlumbing in updatePlumbings)
+            {
+                updatePlumbing.Count = model.RepairPlumbings.FirstOrDefault(rec => rec.Id == updatePlumbing.Id).Count;
+            }
+            source.RepairPlumbings.RemoveAll(rec => rec.RepairId == model.Id && !compIds.Contains(rec.PlumbingId));
+            // новые записи
+            var groupPlumbings = model.RepairPlumbings.Where(rec => rec.Id == 0).GroupBy(rec => rec.PlumbingId)
+                .Select(rec => new
+                {
+                    PlumbingId = rec.Key,
+                    Count = rec.Sum(r => r.Count)
+                });
+            foreach (var groupPlumbing in groupPlumbings)
+            {
+                RepairPlumbing elementPC = source.RepairPlumbings.FirstOrDefault(rec
+                    => rec.RepairId == model.Id && rec.PlumbingId == groupPlumbing.PlumbingId);
+                if (elementPC != null)
+                {
+                    elementPC.Count += groupPlumbing.Count;
+                }
+                else
+                {
+                    source.RepairPlumbings.Add(new RepairPlumbing
+                    {
+                        Id = ++maxPCId,
+                        RepairId = model.Id,
+                        PlumbingId = groupPlumbing.PlumbingId,
+                        Count = groupPlumbing.Count
+                    });
+                }
+            }
         }
 
         public void DelElement(int id)
         {
-            for (int i = 0; i < source.Repairs.Count; ++i)
+            Repair element = source.Repairs.FirstOrDefault(rec => rec.Id == id);
+            if (element != null)
             {
-                if (source.Repairs[i].Id == id)
-                {
-                    source.Repairs.RemoveAt(i);
-                    return;
-                }
+                // удаяем записи по компонентам при удалении изделия
+                source.RepairPlumbings.RemoveAll(rec => rec.RepairId == id);
+                source.Repairs.Remove(element);
             }
-            throw new Exception("Элемент не найден");
+            else
+            {
+                throw new Exception("Элемент не найден");
+            }
         }
     }
 }
