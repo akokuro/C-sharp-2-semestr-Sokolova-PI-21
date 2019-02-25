@@ -165,15 +165,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AbdtractFoodOrderServiceDAL\AbdtractRepairPlumbingOrderServiceDAL.csproj">
+    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbdtractRepairPlumbingServiceDAL.csproj">
       <Project>{5230bd71-1e0a-4294-ae1c-6933b964a12b}</Project>
       <Name>AbdtractRepairPlumbingOrderServiceDAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AbstractFoodOrderModel\AbstractRepairPlumbingOrderModel.csproj">
+    <ProjectReference Include="..\AbstractRepairPlumbingOrderModel\AbstractRepairPlumbingOrderModel.csproj">
       <Project>{21da7a61-e6fa-40d3-81d8-803309b5f809}</Project>
       <Name>AbstractRepairPlumbingOrderModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AbstractFoodOrderServiceImplementList\AbstractRepairPlumbingOrderServiceImplementList.csproj">
+    <ProjectReference Include="..\AbstractRepairPlumbingOrderServiceImplementList\AbstractRepairPlumbingOrderServiceImplementList.csproj">
       <Project>{592ef905-f058-4972-bca4-10514385f1c1}</Project>
       <Name>AbstractRepairPlumbingOrderServiceImplementList</Name>
     </ProjectReference>

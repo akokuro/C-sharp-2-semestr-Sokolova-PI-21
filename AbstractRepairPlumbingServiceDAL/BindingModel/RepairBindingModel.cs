@@ -1,10 +1,5 @@
-﻿using AbstractRepairOrderModel;
-using AbstractRepairOrderServiceDAL.BindingModel;
-using System;
+﻿using AbstractRepairOrderServiceDAL.BindingModel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AbdtractRepairOrderServiceDAL.BindingModel
 {
