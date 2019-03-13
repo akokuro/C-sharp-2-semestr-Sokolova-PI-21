@@ -28,6 +28,7 @@ namespace RepairOrderView
             currentContainer.RegisterType<IPlumbingService, PlumbingServiceList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IRepairService, RepairServiceList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IMainService, MainServiceList>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorageService, StorageServiceList>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

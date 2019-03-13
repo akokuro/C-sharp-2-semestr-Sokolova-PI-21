@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AbstractRepairOrderModel
 {
     /// <summary>
-    /// Ингредиент, требуемый для изготовления изделия
+    /// Сантехника, требуемая для проведения ремонта
     public class Plumbing
     {
         public int Id { get; set; }

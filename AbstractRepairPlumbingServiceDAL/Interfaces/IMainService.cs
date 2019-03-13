@@ -1,5 +1,6 @@
 ﻿using AbdtractRepairOrderServiceDAL.BindingModel;
 using AbdtractRepairOrderServiceDAL.ViewModel;
+using AbstractRepairOrderServiceDAL.BindingModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace AbdtractRepairOrderServiceDAL.Interfaces
         void TakeOrderInWork(OrderBindingModel model);
         void FinishOrder(OrderBindingModel model);
         void PayOrder(OrderBindingModel model);
-
+        void PutComponentOnStorage(StorageComponentBindingModel model);
     }
 }

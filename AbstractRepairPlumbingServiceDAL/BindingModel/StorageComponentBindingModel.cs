@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace AbstractRepairOrderServiceDAL.BindingModel
 {
-    /// <summary>
-    /// Сантехника, требуемая для ремонта
-    public class PlumbingBindingModel
+    public class StorageComponentBindingModel
     {
         public int Id { get; set; }
-        public string PlumbingName { get; set; }
-
+        public int StorageId { get; set; }
+        public int ComponentId { get; set; }
+        public int Count { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AbstractRepairOrderModel
 {
     /// <summary>
-    /// Сколько ингредиентов, требуется при изготовлении еды
+    /// Сколько сантехники требуется для проведения ремонта
     /// </summary>
     public class RepairPlumbing
     {

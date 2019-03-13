@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AbstractRepairOrderServiceDAL.ViewModel
 {
     /// <summary>
-    /// Сколько ингредиентов, требуется при изготовлении еды
+    /// Сколько сантехники требуется для проведения ремонта
     /// </summary>
     public class RepairPlumbingViewModel
     {

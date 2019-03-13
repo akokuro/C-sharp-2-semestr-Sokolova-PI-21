@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace AbstractRepairOrderModel
 {
     /// <summary>
-    /// Клиент ремонта
+    /// Хранилиище компонентов в маcтерской
     /// </summary>
-    public class Client
+    public class Storage
     {
         public int Id { get; set; }
-        public string ClientFIO { get; set; }
+        public string StorageName { get; set; }
     }
 }

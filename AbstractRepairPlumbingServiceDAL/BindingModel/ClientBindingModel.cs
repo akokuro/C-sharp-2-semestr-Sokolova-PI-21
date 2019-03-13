@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AbstractRepairOrderServiceDAL.BindingModel
 {
     /// <summary>
-    /// Клиент доставки
+    /// Клиент ремонта
     /// </summary>
     public class ClientBindingModel
     {

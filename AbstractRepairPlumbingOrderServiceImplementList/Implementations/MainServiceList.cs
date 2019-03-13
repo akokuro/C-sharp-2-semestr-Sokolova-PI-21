@@ -7,6 +7,7 @@ using AbstractRepairOrderModel;
 using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbdtractRepairOrderServiceDAL.BindingModel;
 using AbdtractRepairOrderServiceDAL.ViewModel;
+using AbstractRepairOrderServiceDAL.BindingModel;
 
 namespace AbstractRepairOrderServiceImplementList.Implementations
 {
@@ -59,8 +60,47 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
+            // смотрим по количеству компонентов на складах
+            var repairPlumbings = source.RepairPlumbings.Where(rec => rec.RepairId
+           == element.RepairId);
+            foreach (var repairComponent in repairPlumbings)
+            {
+                int countOnstorages = source.StorageComponents
+                .Where(rec => rec.ComponentId ==
+               repairComponent.PlumbingId)
+               .Sum(rec => rec.Count);
+                if (countOnstorages < repairComponent.Count * element.Count)
+                {
+                    var componentName = source.Plumbings.FirstOrDefault(rec => rec.Id ==
+                   repairComponent.PlumbingId);
+                    throw new Exception("Не достаточно компонента " +
+                   componentName?.PlumbingName + " требуется " + (repairComponent.Count * element.Count) +
+                   ", в наличии " + countOnstorages);
+                }
+            }
+            // списываем
+            foreach (var repairPlumbing in repairPlumbings)
+            {
+                int countOnstorages = repairPlumbing.Count * element.Count;
+                var storageComponents = source.StorageComponents.Where(rec => rec.ComponentId
+               == repairPlumbing.PlumbingId);
+                foreach (var storageComponent in storageComponents)
+                {
+                    // компонентов на одном слкаде может не хватать
+                    if (storageComponent.Count >= countOnstorages)
+                    {
+                        storageComponent.Count -= countOnstorages;
+                        break;
+                    }
+                    else
+                    {
+                        countOnstorages -= storageComponent.Count;
+                        storageComponent.Count = 0;
+                    }
+                }
+            }
             element.DateImplement = DateTime.Now;
-            element.Status = OrderStatus.Выполняется;
+            element.Status = OrderStatus.Выполняется;
         }
         public void FinishOrder(OrderBindingModel model)
         {
@@ -87,6 +127,28 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                 throw new Exception("Заказ не в статусе \"Готов\"");
             }
             element.Status = OrderStatus.Оплачен;
+        }
+
+        public void PutComponentOnStorage(StorageComponentBindingModel model)
+        {
+            StorageComponent element = source.StorageComponents.FirstOrDefault(rec =>
+ rec.StorageId == model.StorageId && rec.ComponentId == model.ComponentId);
+            if (element != null)
+            {
+                element.Count += model.Count;
+            }
+            else
+            {
+                int maxId = source.StorageComponents.Count > 0 ?
+               source.StorageComponents.Max(rec => rec.Id) : 0;
+                source.StorageComponents.Add(new StorageComponent
+                {
+                    Id = ++maxId,
+                    StorageId = model.StorageId,
+                    ComponentId = model.ComponentId,
+                    Count = model.Count
+                });
+            }
         }
     }
 }
