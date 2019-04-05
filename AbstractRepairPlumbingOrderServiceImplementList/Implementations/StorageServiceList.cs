@@ -40,7 +40,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
             if (element != null)
             {
                 // при удалении удаляем все записи о компонентах на удаляемом складе
-                source.StorageComponents.RemoveAll(rec => rec.StorageId == id);
+                source.StoragePlumbings.RemoveAll(rec => rec.StorageId == id);
                 source.Storages.Remove(element);
             }
             else
@@ -58,7 +58,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                 {
                     Id = element.Id,
                     StorageName = element.StorageName,
-                    StorageComponents = source.StorageComponents
+                    StoragePlumbings = source.StoragePlumbings
                 .Where(recPC => recPC.StorageId == element.Id)
                .Select(recPC => new StorageComponentViewModel
                {
@@ -82,7 +82,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
             {
                 Id = rec.Id,
                 StorageName = rec.StorageName,
-                StorageComponents = source.StorageComponents.Where(recPC => recPC.StorageId == rec.Id).Select(recPC => new StorageComponentViewModel
+                StoragePlumbings = source.StoragePlumbings.Where(recPC => recPC.StorageId == rec.Id).Select(recPC => new StorageComponentViewModel
                 {
                     Id = recPC.Id,
                     StorageId = recPC.StorageId,

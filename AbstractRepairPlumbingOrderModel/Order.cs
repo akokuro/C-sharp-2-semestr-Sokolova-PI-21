@@ -19,5 +19,7 @@ namespace AbstractRepairOrderModel
         public OrderStatus Status { get; set; }
         public DateTime DateCreate { get; set; }
         public DateTime? DateImplement { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Repair Repair { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
         public List<Repair> Repairs { get; set; }
         public List<RepairPlumbing> RepairPlumbings { get; set; }
         public List<Storage> Storages { get; set; }
-        public List<StorageComponent> StorageComponents { get; set; }
+        public List<StoragePlumbing> StoragePlumbings { get; set; }
         private DataListSingleton()
         {
             Clients = new List<Client>();
@@ -26,7 +26,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
             Repairs = new List<Repair>();
             RepairPlumbings = new List<RepairPlumbing>();
             Storages = new List<Storage>();
-            StorageComponents = new List<StorageComponent>();
+            StoragePlumbings = new List<StoragePlumbing>();
         }
         public static DataListSingleton GetInstance()
         {

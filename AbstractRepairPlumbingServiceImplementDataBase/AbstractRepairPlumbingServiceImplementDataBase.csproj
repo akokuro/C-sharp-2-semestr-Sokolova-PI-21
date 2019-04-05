@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5230BD71-1E0A-4294-AE1C-6933B964A12B}</ProjectGuid>
+    <ProjectGuid>{B0EE48B7-8D49-40FB-9C44-5D7D1B8B0028}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AbdtractFoodOrderServiceDAL</RootNamespace>
-    <AssemblyName>AbdtractFoodOrderServiceDAL</AssemblyName>
+    <RootNamespace>AbstractRepairPlumbingServiceImplementDataBase</RootNamespace>
+    <AssemblyName>AbstractRepairPlumbingServiceImplementDataBase</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -48,36 +48,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindingModel\ClientBindingModel.cs" />
-    <Compile Include="BindingModel\RepairBindingModel.cs" />
-    <Compile Include="BindingModel\RepairPlumbingBindingModel.cs" />
-    <Compile Include="BindingModel\PlumbingBindingModel.cs" />
-    <Compile Include="BindingModel\OrderBindingModel.cs" />
-    <Compile Include="BindingModel\StorageBindingModel.cs" />
-    <Compile Include="BindingModel\StorageComponentBindingModel.cs" />
-    <Compile Include="Interfaces\IClientService.cs" />
-    <Compile Include="Interfaces\IRepairService.cs" />
-    <Compile Include="Interfaces\IPlumbingService.cs" />
-    <Compile Include="Interfaces\IMainService.cs" />
-    <Compile Include="Interfaces\IStorageService.cs" />
+    <Compile Include="AbstractDbContext.cs" />
+    <Compile Include="ClientServiceDB.cs" />
+    <Compile Include="MainServiceDB.cs" />
+    <Compile Include="Migrations\201903131345151_FirstMigration.cs" />
+    <Compile Include="Migrations\201903131345151_FirstMigration.Designer.cs">
+      <DependentUpon>201903131345151_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PlumbingServiceDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\ClientViewModel.cs" />
-    <Compile Include="ViewModel\RepairViewModel.cs" />
-    <Compile Include="ViewModel\RepairPlumbingViewModel.cs" />
-    <Compile Include="ViewModel\PlumbingViewModel.cs" />
-    <Compile Include="ViewModel\OrderViewModel.cs" />
-    <Compile Include="ViewModel\StorageComponentViewModel.cs" />
-    <Compile Include="ViewModel\StorageViewModel.cs" />
+    <Compile Include="RepairServiceDB.cs" />
+    <Compile Include="StorageServiceDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AbstractRepairPlumbingOrderModel\AbstractRepairPlumbingOrderModel.csproj">
       <Project>{21da7a61-e6fa-40d3-81d8-803309b5f809}</Project>
-      <Name>AbstractRepairPlumbingModel</Name>
+      <Name>AbstractRepairPlumbingOrderModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbstractRepairPlumbingOrderServiceImplementList\AbstractRepairPlumbingOrderServiceImplementList.csproj">
+      <Project>{592ef905-f058-4972-bca4-10514385f1c1}</Project>
+      <Name>AbstractRepairPlumbingOrderServiceImplementList</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbdtractRepairPlumbingServiceDAL.csproj">
+      <Project>{5230bd71-1e0a-4294-ae1c-6933b964a12b}</Project>
+      <Name>AbdtractRepairPlumbingServiceDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903131345151_FirstMigration.resx">
+      <DependentUpon>201903131345151_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

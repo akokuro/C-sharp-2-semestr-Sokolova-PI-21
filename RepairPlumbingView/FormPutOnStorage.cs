@@ -71,7 +71,7 @@ namespace RepairOrderView
             }
             try
             {
-                serviceM.PutComponentOnStorage(new StorageComponentBindingModel
+                serviceM.PutComponentOnStorage(new StoragePlumbingBindingModel
                 {
                     ComponentId = Convert.ToInt32(comboBoxPlumbing.SelectedValue),
                     StorageId = Convert.ToInt32(comboBoxStorage.SelectedValue),

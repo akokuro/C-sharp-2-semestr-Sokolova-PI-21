@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbstractRepairOrderServiceDAL.BindingModel
 {
-    public class StorageComponentBindingModel
+    public class StoragePlumbingBindingModel
     {
         public int Id { get; set; }
         public int StorageId { get; set; }

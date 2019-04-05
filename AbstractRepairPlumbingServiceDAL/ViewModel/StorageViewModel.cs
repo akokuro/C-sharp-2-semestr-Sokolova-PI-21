@@ -12,6 +12,6 @@ namespace AbstractRepairOrderServiceDAL.ViewModel
         public int Id { get; set; }
         [DisplayName("Название склада")]
         public string StorageName { get; set; }
-        public List<StorageComponentViewModel> StorageComponents { get; set; }
+        public List<StorageComponentViewModel> StoragePlumbings { get; set; }
     }
 }

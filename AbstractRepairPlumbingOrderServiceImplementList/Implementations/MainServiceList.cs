@@ -65,7 +65,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
            == element.RepairId);
             foreach (var repairComponent in repairPlumbings)
             {
-                int countOnstorages = source.StorageComponents
+                int countOnstorages = source.StoragePlumbings
                 .Where(rec => rec.ComponentId ==
                repairComponent.PlumbingId)
                .Sum(rec => rec.Count);
@@ -82,7 +82,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
             foreach (var repairPlumbing in repairPlumbings)
             {
                 int countOnstorages = repairPlumbing.Count * element.Count;
-                var storageComponents = source.StorageComponents.Where(rec => rec.ComponentId
+                var storageComponents = source.StoragePlumbings.Where(rec => rec.ComponentId
                == repairPlumbing.PlumbingId);
                 foreach (var storageComponent in storageComponents)
                 {
@@ -129,9 +129,9 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
             element.Status = OrderStatus.Оплачен;
         }
 
-        public void PutComponentOnStorage(StorageComponentBindingModel model)
+        public void PutComponentOnStorage(StoragePlumbingBindingModel model)
         {
-            StorageComponent element = source.StorageComponents.FirstOrDefault(rec =>
+            StoragePlumbing element = source.StoragePlumbings.FirstOrDefault(rec =>
  rec.StorageId == model.StorageId && rec.ComponentId == model.ComponentId);
             if (element != null)
             {
@@ -139,9 +139,9 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
             }
             else
             {
-                int maxId = source.StorageComponents.Count > 0 ?
-               source.StorageComponents.Max(rec => rec.Id) : 0;
-                source.StorageComponents.Add(new StorageComponent
+                int maxId = source.StoragePlumbings.Count > 0 ?
+               source.StoragePlumbings.Max(rec => rec.Id) : 0;
+                source.StoragePlumbings.Add(new StoragePlumbing
                 {
                     Id = ++maxId,
                     StorageId = model.StorageId,

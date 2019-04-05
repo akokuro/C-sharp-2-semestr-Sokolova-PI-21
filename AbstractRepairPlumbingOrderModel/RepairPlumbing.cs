@@ -15,5 +15,7 @@ namespace AbstractRepairOrderModel
         public int RepairId { get; set; }
         public int PlumbingId { get; set; }
         public int Count { get; set; }
+        public virtual Repair Repair { get; set; }
+        public virtual Plumbing Plumbing { get; set; }
     }
 }

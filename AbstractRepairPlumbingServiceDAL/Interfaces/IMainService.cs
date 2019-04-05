@@ -16,6 +16,6 @@ namespace AbdtractRepairOrderServiceDAL.Interfaces
         void TakeOrderInWork(OrderBindingModel model);
         void FinishOrder(OrderBindingModel model);
         void PayOrder(OrderBindingModel model);
-        void PutComponentOnStorage(StorageComponentBindingModel model);
+        void PutComponentOnStorage(StoragePlumbingBindingModel model);
     }
 }
