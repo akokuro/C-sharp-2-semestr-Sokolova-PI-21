@@ -1,4 +1,5 @@
-﻿using AbdtractRepairOrderServiceDAL.Interfaces;
+﻿using AbdtractFoodOrderServiceDAL.Interfaces;
+using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceImplementList.Implementations;
 using AbstractRepairPlumbingServiceImplementDataBase;
 using System;
@@ -26,8 +27,8 @@ namespace RepairOrderView
         public static IUnityContainer BuildUnityContainer()
         {
             var currentContainer = new UnityContainer();
-            currentContainer.RegisterType<DbContext, AbstractRepairPlumbingDbContext>(new
-HierarchicalLifetimeManager());
+            currentContainer.RegisterType<DbContext, AbstractRepairPlumbingDbContext>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReportService, ReportServiceDB>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IClientService, ClientServiceDB>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IPlumbingService, PlumbingServiceDB>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IRepairService, RepairServiceDB>(new HierarchicalLifetimeManager());
