@@ -9,6 +9,7 @@ namespace AbstractRepairOrderServiceDAL.ViewModel
 {
     public class StorageViewModel
     {
+
         public int Id { get; set; }
         [DisplayName("Название склада")]
         public string StorageName { get; set; }
