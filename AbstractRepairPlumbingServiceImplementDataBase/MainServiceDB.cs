@@ -145,7 +145,7 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
         public void PutComponentOnStorage(StoragePlumbingBindingModel model)
         {
             StoragePlumbing element = context.StoragePlumbings.FirstOrDefault(rec =>
-           rec.StorageId == model.StorageId && rec.ComponentId == model.ComponentId);
+           rec.StorageId == model.StorageId && rec.ComponentId == model.PlumbingId);
             if (element != null)
             {
                 element.Count += model.Count;
@@ -155,7 +155,7 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 context.StoragePlumbings.Add(new StoragePlumbing
                 {
                     StorageId = model.StorageId,
-                    ComponentId = model.ComponentId,
+                    ComponentId = model.PlumbingId,
                     Count = model.Count
                 });
             }

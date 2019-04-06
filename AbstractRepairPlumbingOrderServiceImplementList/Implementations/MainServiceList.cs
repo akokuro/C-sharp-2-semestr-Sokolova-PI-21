@@ -132,7 +132,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
         public void PutComponentOnStorage(StoragePlumbingBindingModel model)
         {
             StoragePlumbing element = source.StoragePlumbings.FirstOrDefault(rec =>
- rec.StorageId == model.StorageId && rec.ComponentId == model.ComponentId);
+ rec.StorageId == model.StorageId && rec.ComponentId == model.PlumbingId);
             if (element != null)
             {
                 element.Count += model.Count;
@@ -145,7 +145,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                 {
                     Id = ++maxId,
                     StorageId = model.StorageId,
-                    ComponentId = model.ComponentId,
+                    ComponentId = model.PlumbingId,
                     Count = model.Count
                 });
             }
