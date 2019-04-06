@@ -63,12 +63,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractDbContext.cs" />
+    <Compile Include="AbstractRepairPlumbingDbContext.cs" />
     <Compile Include="ClientServiceDB.cs" />
     <Compile Include="MainServiceDB.cs" />
     <Compile Include="Migrations\201903131345151_FirstMigration.cs" />
     <Compile Include="Migrations\201903131345151_FirstMigration.Designer.cs">
       <DependentUpon>201903131345151_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904060716414_Second.cs" />
+    <Compile Include="Migrations\201904060716414_Second.Designer.cs">
+      <DependentUpon>201904060716414_Second.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlumbingServiceDB.cs" />
@@ -104,6 +108,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903131345151_FirstMigration.resx">
       <DependentUpon>201903131345151_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904060716414_Second.resx">
+      <DependentUpon>201904060716414_Second.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
