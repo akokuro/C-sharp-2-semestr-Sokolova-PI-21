@@ -1,27 +1,17 @@
 ﻿using AbdtractRepairOrderServiceDAL.Interfaces;
+using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormClients : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IClientService service;
-        public FormClients(IClientService service)
+        public FormClients()
         {
             InitializeComponent();
-            this.service = service;
         }
         private void FormClients_Load(object sender, EventArgs e)
         {
@@ -31,13 +21,12 @@ namespace RepairOrderView
         {
             try
             {
-                List<ClientViewModel> list = service.GetList();
+                List<ClientViewModel> list = APIClient.GetRequest<List<ClientViewModel>>("api/Client/GetList");
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
                     dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[1].AutoSizeMode =
-                    DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -48,7 +37,7 @@ namespace RepairOrderView
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormClient>();
+            var form = new FormClient();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -58,7 +47,7 @@ namespace RepairOrderView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormClient>();
+                var form = new FormClient();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -73,11 +62,10 @@ namespace RepairOrderView
                 if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
                MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int id =
-                   Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                    int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        service.DelElement(id);
+                        APIClient.PostRequest<ClientBindingModel, bool>("api/Client/DelElement", new ClientBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

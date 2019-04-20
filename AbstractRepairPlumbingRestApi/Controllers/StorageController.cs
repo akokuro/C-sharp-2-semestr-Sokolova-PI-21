@@ -1,14 +1,18 @@
 ﻿using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace AbstractRepairPlumbingRestApi.Controllers
 {
-    public class ClientController : ApiController
+    public class StorageController : ApiController
     {
-        private readonly IClientService _service;
-        public ClientController(IClientService service)
+        private readonly IStorageService _service;
+        public StorageController(IStorageService service)
         {
             _service = service;
         }
@@ -33,17 +37,17 @@ namespace AbstractRepairPlumbingRestApi.Controllers
             return Ok(element);
         }
         [HttpPost]
-        public void AddElement(ClientBindingModel model)
+        public void AddElement(StorageBindingModel model)
         {
             _service.AddElement(model);
         }
         [HttpPost]
-        public void UpdElement(ClientBindingModel model)
+        public void UpdElement(StorageBindingModel model)
         {
             _service.UpdElement(model);
         }
         [HttpPost]
-        public void DelElement(ClientBindingModel model)
+        public void DelElement(StorageBindingModel model)
         {
             _service.DelElement(model.Id);
         }

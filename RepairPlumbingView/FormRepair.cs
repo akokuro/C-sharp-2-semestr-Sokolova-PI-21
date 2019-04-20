@@ -4,29 +4,18 @@ using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormRepair : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
         public int Id { set { id = value; } }
-        private readonly IRepairService service;
         private int? id;
         private List<RepairPlumbingViewModel> RepairPlumbings;
         public FormRepair(IRepairService service)
         {
             InitializeComponent();
-            this.service = service;
         }
         private void FormRepair_Load(object sender, EventArgs e)
         {
@@ -35,7 +24,7 @@ namespace RepairOrderView
             {
                 try
                 {
-                    RepairViewModel view = service.GetElement(id.Value);
+                    RepairViewModel view = APIClient.GetRequest<RepairViewModel>("api/Repair/Get/" + id.Value);
                     if (view != null)
                     {
                         textBoxName.Text = view.RepairName;
@@ -77,7 +66,7 @@ namespace RepairOrderView
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormRepairPlumbing>();
+            var form = new FormRepairPlumbing();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 if (form.Model != null)
@@ -95,13 +84,11 @@ namespace RepairOrderView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormRepairPlumbing>();
-                form.Model =
-               RepairPlumbings[dataGridView.SelectedRows[0].Cells[0].RowIndex];
+                var form = new FormRepairPlumbing();
+                form.Model = RepairPlumbings[dataGridView.SelectedRows[0].Cells[0].RowIndex];
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    RepairPlumbings[dataGridView.SelectedRows[0].Cells[0].RowIndex] =
-                   form.Model;
+                    RepairPlumbings[dataGridView.SelectedRows[0].Cells[0].RowIndex] = form.Model;
                     LoadData();
                 }
             }
@@ -166,7 +153,7 @@ namespace RepairOrderView
                 }
                 if (id.HasValue)
                 {
-                    service.UpdElement(new RepairBindingModel
+                    APIClient.PostRequest<RepairBindingModel, bool>("api/Repair/UpdElement", new RepairBindingModel
                     {
                         Id = id.Value,
                         RepairName = textBoxName.Text,
@@ -176,7 +163,7 @@ namespace RepairOrderView
                 }
                 else
                 {
-                    service.AddElement(new RepairBindingModel
+                    APIClient.PostRequest<RepairBindingModel, bool>("api/Repair/AddElement", new RepairBindingModel
                     {
                         RepairName = textBoxName.Text,
                         Price = Convert.ToInt32(textBoxPrice.Text),

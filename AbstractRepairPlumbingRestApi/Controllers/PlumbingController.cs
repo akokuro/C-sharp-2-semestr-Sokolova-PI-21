@@ -3,12 +3,12 @@ using AbstractRepairOrderServiceDAL.BindingModel;
 using System;
 using System.Web.Http;
 
-namespace AbstractRepairPlumbingRestApi.Controllers
+namespace AbstractPlumbingPlumbingRestApi.Controllers
 {
-    public class ClientController : ApiController
+    public class PlumbingController : ApiController
     {
-        private readonly IClientService _service;
-        public ClientController(IClientService service)
+          private readonly IPlumbingService _service;
+        public PlumbingController(IPlumbingService service)
         {
             _service = service;
         }
@@ -33,17 +33,17 @@ namespace AbstractRepairPlumbingRestApi.Controllers
             return Ok(element);
         }
         [HttpPost]
-        public void AddElement(ClientBindingModel model)
+        public void AddElement(PlumbingBindingModel model)
         {
             _service.AddElement(model);
         }
         [HttpPost]
-        public void UpdElement(ClientBindingModel model)
+        public void UpdElement(PlumbingBindingModel model)
         {
             _service.UpdElement(model);
         }
         [HttpPost]
-        public void DelElement(ClientBindingModel model)
+        public void DelElement(PlumbingBindingModel model)
         {
             _service.DelElement(model.Id);
         }

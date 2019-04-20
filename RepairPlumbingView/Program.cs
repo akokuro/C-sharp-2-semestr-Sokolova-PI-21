@@ -1,12 +1,5 @@
-﻿using AbdtractFoodOrderServiceDAL.Interfaces;
-using AbdtractRepairOrderServiceDAL.Interfaces;
-using AbstractRepairOrderServiceImplementList.Implementations;
-using AbstractRepairPlumbingServiceImplementDataBase;
-using System;
-using System.Data.Entity;
+﻿using System;
 using System.Windows.Forms;
-using Unity;
-using Unity.Lifetime;
 
 namespace RepairOrderView
 {
@@ -18,23 +11,10 @@ namespace RepairOrderView
         [STAThread]
         static void Main()
         {
-            var container = BuildUnityContainer();
-
+            APIClient.Connect();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(container.Resolve<FormMain>());
-        }
-        public static IUnityContainer BuildUnityContainer()
-        {
-            var currentContainer = new UnityContainer();
-            currentContainer.RegisterType<DbContext, AbstractRepairPlumbingDbContext>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IReportService, ReportServiceDB>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IClientService, ClientServiceDB>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IPlumbingService, PlumbingServiceDB>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IRepairService, RepairServiceDB>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IMainService, MainServiceDB>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IStorageService, StorageServiceDB>(new HierarchicalLifetimeManager());
-            return currentContainer;
+            Application.Run(new FormMain());
         }
     }
 }

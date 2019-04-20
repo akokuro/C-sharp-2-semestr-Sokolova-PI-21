@@ -2,26 +2,15 @@
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormRepairs : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IRepairService service;
-        public FormRepairs(IRepairService service)
+        public FormRepairs()
         {
             InitializeComponent();
-            this.service = service;
         }
         private void FormClients_Load(object sender, EventArgs e)
         {

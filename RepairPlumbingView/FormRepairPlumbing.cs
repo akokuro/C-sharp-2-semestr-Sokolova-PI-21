@@ -2,21 +2,12 @@
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormRepairPlumbing : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
         public RepairPlumbingViewModel Model
         {
             set { model = value; }
@@ -25,18 +16,16 @@ namespace RepairOrderView
                 return model;
             }
         }
-        private readonly IPlumbingService service;
         private RepairPlumbingViewModel model;
-        public FormRepairPlumbing(IPlumbingService service)
+        public FormRepairPlumbing()
         {
             InitializeComponent();
-            this.service = service;
         }
         private void FormProductPlumbing_Load(object sender, EventArgs e)
         {
             try
             {
-                List<PlumbingViewModel> list = service.GetList();
+                List<PlumbingViewModel> list = APIClient.GetRequest<List<PlumbingViewModel>>("api/Plumbing/GetList");
                 if (list != null)
                 {
                     comboBoxPlumbing.DisplayMember = "PlumbingName";

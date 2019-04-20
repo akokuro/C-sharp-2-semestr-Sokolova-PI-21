@@ -1,28 +1,17 @@
-﻿using AbdtractFoodOrderServiceDAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using Microsoft.Reporting.WinForms;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 using AbdtractFoodOrderServiceDAL.BindingModel;
+using System.Collections.Generic;
+using AbdtractFoodOrderServiceDAL.ViewModel;
 
 namespace RepairOrderView
 {
     public partial class FormClientOrders : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IReportService service;
-        public FormClientOrders(IReportService service)
+        public FormClientOrders()
         {
             InitializeComponent();
-            this.service = service;
         }
         private void buttonMake_Click(object sender, EventArgs e)
         {
@@ -35,18 +24,20 @@ namespace RepairOrderView
             try
             {
                 ReportParameter parameter = new ReportParameter("ReportParameterPeriod",
-                "c " +
-               dateTimePickerFrom.Value.ToShortDateString() +
-                " по " +
-               dateTimePickerTo.Value.ToShortDateString());
+ "c " +
+dateTimePickerFrom.Value.ToShortDateString() +
+ " по " +
+dateTimePickerTo.Value.ToShortDateString());
                 reportViewer.LocalReport.SetParameters(parameter);
-                var dataSource = service.GetClientOrders(new ReportBindingModel
-                {
-                    DateFrom = dateTimePickerFrom.Value,
-                    DateTo = dateTimePickerTo.Value
-                });
+                List<ClientOrdersModel> response =
+               APIClient.PostRequest<ReportBindingModel,
+               List<ClientOrdersModel>>("api/Report/GetClientOrders", new ReportBindingModel
+               {
+                   DateFrom = dateTimePickerFrom.Value,
+                   DateTo = dateTimePickerTo.Value
+               });
                 ReportDataSource source = new ReportDataSource("DataSetOrders",
-               dataSource);
+               response);
                 reportViewer.LocalReport.DataSources.Add(source);
                 reportViewer.RefreshReport();
             }
@@ -72,14 +63,14 @@ namespace RepairOrderView
             {
                 try
                 {
-                    service.SaveClientOrders(new ReportBindingModel
+                    APIClient.PostRequest<ReportBindingModel, bool>("api/Report/SaveClientOrders", new ReportBindingModel
                     {
                         FileName = sfd.FileName,
                         DateFrom = dateTimePickerFrom.Value,
                         DateTo = dateTimePickerTo.Value
                     });
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                   MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {

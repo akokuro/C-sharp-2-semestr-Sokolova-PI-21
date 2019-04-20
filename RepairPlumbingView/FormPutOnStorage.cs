@@ -3,38 +3,29 @@ using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;using Unity;
+using System.Windows.Forms;
 
 namespace RepairOrderView
 {
     public partial class FormPutOnStorage : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IStorageService serviceS;
-        private readonly IPlumbingService serviceC;
-        private readonly IMainService serviceM;
-        public FormPutOnStorage(IStorageService serviceS, IPlumbingService serviceC,
-       IMainService serviceM)
+        public FormPutOnStorage()
         {
             InitializeComponent();
-            this.serviceS = serviceS;
-            this.serviceC = serviceC;
-            this.serviceM = serviceM;
         }
         private void FormPutOnStorage_Load(object sender, EventArgs e)
         {
             try
             {
-                List<PlumbingViewModel> listC = serviceC.GetList();
-                if (listC != null)
+                List<PlumbingViewModel> listP = APIClient.GetRequest<List<PlumbingViewModel>>("api/Plumbing/GetList");
+                if (listP != null)
                 {
                     comboBoxPlumbing.DisplayMember = "PlumbingName";
                     comboBoxPlumbing.ValueMember = "Id";
-                    comboBoxPlumbing.DataSource = listC;
+                    comboBoxPlumbing.DataSource = listP;
                     comboBoxPlumbing.SelectedItem = null;
                 }
-                List<StorageViewModel> listS = serviceS.GetList();
+                List<StorageViewModel> listS = APIClient.GetRequest<List<StorageViewModel>>("api/Storage/GetList");
                 if (listS != null)
                 {
                     comboBoxStorage.DisplayMember = "StorageName";
@@ -71,7 +62,7 @@ namespace RepairOrderView
             }
             try
             {
-                serviceM.PutComponentOnStorage(new StoragePlumbingBindingModel
+                APIClient.PostRequest<StoragePlumbingBindingModel, bool>("api/Main/PutPlumbingOnStorage", new StoragePlumbingBindingModel
                 {
                     PlumbingId = Convert.ToInt32(comboBoxPlumbing.SelectedValue),
                     StorageId = Convert.ToInt32(comboBoxStorage.SelectedValue),

@@ -5,8 +5,6 @@ using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AbstractRepairPlumbingServiceImplementDataBase
 {
@@ -19,13 +17,11 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
         }
         public List<ClientViewModel> GetList()
         {
-            List<ClientViewModel> result = context.Clients.Select(rec => new
-           ClientViewModel
+            List<ClientViewModel> result = context.Clients.Select(rec => new ClientViewModel
             {
                 Id = rec.Id,
                 ClientFIO = rec.ClientFIO
-            })
-            .ToList();
+            }).ToList();
             return result;
         }
         public ClientViewModel GetElement(int id)

@@ -1,39 +1,24 @@
 ﻿using AbdtractRepairOrderServiceDAL.BindingModel;
 using AbdtractRepairOrderServiceDAL.Interfaces;
+using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormCreateOrder : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IClientService serviceC;
-        private readonly IRepairService serviceF;
-        private readonly IMainService serviceM;
-        public FormCreateOrder(IClientService serviceC, IRepairService serviceF,
-       IMainService serviceM)
+        public FormCreateOrder()
         {
             InitializeComponent();
-            this.serviceC = serviceC;
-            this.serviceF = serviceF;
-            this.serviceM = serviceM;
         }
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
             try
             {
-                List<ClientViewModel> listC = serviceC.GetList();
+                List<ClientViewModel> listC = APIClient.GetRequest<List<ClientViewModel>>("api/Client/GetList");
                 if (listC != null)
                 {
                     comboBoxClient.DisplayMember = "ClientFIO";
@@ -41,12 +26,12 @@ namespace RepairOrderView
                     comboBoxClient.DataSource = listC;
                     comboBoxClient.SelectedItem = null;
                 }
-                List<RepairViewModel> listF = serviceF.GetList();
-                if (listF != null)
+                List<RepairViewModel> listR = APIClient.GetRequest<List<RepairViewModel>>("api/Repair/GetList");
+                if (listR != null)
                 {
                     comboBoxRepair.DisplayMember = "RepairName";
                     comboBoxRepair.ValueMember = "Id";
-                    comboBoxRepair.DataSource = listF;
+                    comboBoxRepair.DataSource = listR;
                     comboBoxRepair.SelectedItem = null;
                 }
             }
@@ -64,7 +49,7 @@ namespace RepairOrderView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxRepair.SelectedValue);
-                    RepairViewModel Repair = serviceF.GetElement(id);
+                    RepairViewModel Repair = APIClient.GetRequest<RepairViewModel>("api/Repair/Get/" + id); ;
                     int count = Convert.ToInt32(textBoxCount.Text);
                     textBoxSum.Text = (count * Repair.Price).ToString();
                 }
@@ -104,7 +89,7 @@ namespace RepairOrderView
             }
             try
             {
-                serviceM.CreateOrder(new OrderBindingModel
+                APIClient.PostRequest<OrderBindingModel, bool>("api/Main/CreateOrder", new OrderBindingModel
                 {
                     ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     RepairId = Convert.ToInt32(comboBoxRepair.SelectedValue),
