@@ -1,27 +1,17 @@
 ﻿using AbdtractRepairOrderServiceDAL.Interfaces;
+using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormStorages : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IStorageService service;
-        public FormStorages(IStorageService service)
+        public FormStorages()
         {
             InitializeComponent();
-            this.service = service;
         }
         private void FormStorages_Load(object sender, EventArgs e)
         {
@@ -31,7 +21,7 @@ namespace RepairOrderView
         {
             try
             {
-                List<StorageViewModel> list = service.GetList();
+                List<StorageViewModel> list = APIClient.GetRequest<List<StorageViewModel>>("api/Storage/GetList");
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
@@ -48,7 +38,7 @@ namespace RepairOrderView
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormStorage>();
+            var form = new FormStorage();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -58,7 +48,7 @@ namespace RepairOrderView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormStorage>();
+                var form = new FormStorage();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -77,7 +67,7 @@ namespace RepairOrderView
                    Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        service.DelElement(id);
+                        APIClient.PostRequest<StorageBindingModel, bool>("api/Storage/DelElement", new StorageBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

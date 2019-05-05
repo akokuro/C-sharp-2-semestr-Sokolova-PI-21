@@ -9,6 +9,10 @@ namespace RepairOrderView
 {
     public partial class FormClientOrders : Form
     {
+        private void formcustomerorders_load(object sender, EventArgs e)
+        {
+            this.reportViewer.RefreshReport();
+        }
         public FormClientOrders()
         {
             InitializeComponent();

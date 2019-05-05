@@ -13,7 +13,7 @@ namespace RepairOrderView
         public int Id { set { id = value; } }
         private int? id;
         private List<RepairPlumbingViewModel> RepairPlumbings;
-        public FormRepair(IRepairService service)
+        public FormRepair()
         {
             InitializeComponent();
         }

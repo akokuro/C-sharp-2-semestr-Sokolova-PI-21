@@ -1,4 +1,5 @@
-﻿using AbdtractRepairOrderServiceDAL.Interfaces;
+﻿using AbdtractRepairOrderServiceDAL.BindingModel;
+using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace RepairOrderView
         {
             try
             {
-                List<RepairViewModel> list = service.GetList();
+                List<RepairViewModel> list = APIClient.GetRequest<List<RepairViewModel>>("api/Repair/GetList");
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
@@ -37,7 +38,7 @@ namespace RepairOrderView
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormRepair>();
+            var form = new FormRepair();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -47,7 +48,7 @@ namespace RepairOrderView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormRepair>();
+                var form = new FormRepair();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -66,7 +67,7 @@ namespace RepairOrderView
                    Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        service.DelElement(id);
+                        APIClient.PostRequest<RepairBindingModel, bool>("api/Repair/DelElement", new RepairBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

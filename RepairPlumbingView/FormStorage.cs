@@ -2,29 +2,17 @@
 using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormStorage : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
         public int Id { set { id = value; } }
-        private readonly IStorageService service;
         private int? id;
-        public FormStorage(IStorageService service)
+        public FormStorage()
         {
             InitializeComponent();
-            this.service = service;
         }
         private void FormStorage_Load(object sender, EventArgs e)
         {
@@ -32,7 +20,7 @@ namespace RepairOrderView
             {
                 try
                 {
-                    StorageViewModel view = service.GetElement(id.Value);
+                    StorageViewModel view = APIClient.GetRequest<StorageViewModel>("api/Storage/Get/" + id.Value);
                     if (view != null)
                     {
                         textBoxName.Text = view.StorageName;
@@ -63,7 +51,7 @@ namespace RepairOrderView
             {
                 if (id.HasValue)
                 {
-                    service.UpdElement(new StorageBindingModel
+                    APIClient.PostRequest<StorageBindingModel, bool>("api/Storage/UpdElement", new StorageBindingModel
                     {
                         Id = id.Value,
                         StorageName = textBoxName.Text
@@ -71,7 +59,7 @@ namespace RepairOrderView
                 }
                 else
                 {
-                    service.AddElement(new StorageBindingModel
+                     APIClient.PostRequest<StorageBindingModel, bool>("api/Storage/AddElement", new StorageBindingModel
                     {
                         StorageName = textBoxName.Text
                     });

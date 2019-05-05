@@ -16,7 +16,7 @@ namespace AbstractRepairOrderModel
         public int Id { get; set; }
         [Required]
         public string ClientFIO { get; set; }
-        [ForeignKey("ClientId")]
-        public virtual List<Order> Orders { get; set; }
+        //[ForeignKey("ClientId")]
+        //public virtual List<Order> Orders { get; set; }
     }
 }

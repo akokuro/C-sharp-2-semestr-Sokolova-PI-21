@@ -1,26 +1,22 @@
 ﻿using AbdtractFoodOrderServiceDAL.BindingModel;
-using AbdtractFoodOrderServiceDAL.Interfaces;
+using AbdtractFoodOrderServiceDAL.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using Unity;
 
 namespace RepairOrderView
 {
     public partial class FormStoragesLoad : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IReportService service;
-        public FormStoragesLoad(IReportService service)
+        public FormStoragesLoad()
         {
             InitializeComponent();
-            this.service = service;
         }
         private void FormStoragesLoad_Load(object sender, EventArgs e)
         {
             try
             {
-                var dict = service.GetStoragesLoad();
+                var dict = APIClient.GetRequest<List<StoragesLoadViewModel>>("api/Repair/GetStoragesLoad");
                 if (dict != null)
                 {
                     dataGridView.Rows.Clear();
@@ -29,11 +25,9 @@ namespace RepairOrderView
                         dataGridView.Rows.Add(new object[] { elem.StorageName, "", "" });
                         foreach (var listElem in elem.Plumbings)
                         {
-                            dataGridView.Rows.Add(new object[] { "", listElem.Item1,
-listElem.Item2 });
+                            dataGridView.Rows.Add(new object[] { "", listElem.Item1, listElem.Item2 });
                         }
-                        dataGridView.Rows.Add(new object[] { "Итого", "", elem.TotalCount
-});
+                        dataGridView.Rows.Add(new object[] { "Итого", "", elem.TotalCount});
                         dataGridView.Rows.Add(new object[] { });
                     }
                 }
@@ -54,7 +48,7 @@ listElem.Item2 });
             {
                 try
                 {
-                    service.SaveStoragesLoad(new ReportBindingModel
+                    APIClient.PostRequest<ReportBindingModel, bool>("api/Repair/GetStoragesLoad", new ReportBindingModel
                     {
                         FileName = sfd.FileName
                     });

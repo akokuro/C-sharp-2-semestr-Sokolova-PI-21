@@ -94,7 +94,7 @@ namespace RepairOrderView
                     ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     RepairId = Convert.ToInt32(comboBoxRepair.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
-                    Sum = Convert.ToInt32(textBoxSum.Text)
+                    Sum = Convert.ToDecimal(textBoxSum.Text)
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);

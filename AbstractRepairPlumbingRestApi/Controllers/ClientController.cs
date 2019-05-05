@@ -11,6 +11,7 @@ namespace AbstractRepairPlumbingRestApi.Controllers
         public ClientController(IClientService service)
         {
             _service = service;
+            Console.WriteLine("Сервер создался");
         }
         [HttpGet]
         public IHttpActionResult GetList()
@@ -35,7 +36,9 @@ namespace AbstractRepairPlumbingRestApi.Controllers
         [HttpPost]
         public void AddElement(ClientBindingModel model)
         {
+            Console.WriteLine("Попытался добавить");
             _service.AddElement(model);
+            Console.WriteLine("Что-то пошло не так");
         }
         [HttpPost]
         public void UpdElement(ClientBindingModel model)

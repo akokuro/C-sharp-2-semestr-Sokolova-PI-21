@@ -88,7 +88,8 @@ namespace RepairOrderView
                     APIClient.PostRequest<OrderBindingModel, bool>("api/Main/FinishOrder", new OrderBindingModel
                     {
                         Id = id
-                    });
+                    });
+
                     LoadData();
                 }
                 catch (Exception ex)
@@ -105,7 +106,7 @@ namespace RepairOrderView
                 int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
-                    APIClient.PostRequest<OrderBindingModel, bool>("api/Main/.PayOrder", new OrderBindingModel
+                    APIClient.PostRequest<OrderBindingModel, bool>("api/Main/PayOrder", new OrderBindingModel
                     {
                         Id = id
                     });
@@ -161,7 +162,7 @@ namespace RepairOrderView
         private void загруженностьСкладовToolStripMenuItem_Click(object sender, EventArgs
        e)
         {
-            var form = FormStoragesLoad();
+            var form = new FormStoragesLoad();
             form.ShowDialog();
         }
         private void заказыКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
