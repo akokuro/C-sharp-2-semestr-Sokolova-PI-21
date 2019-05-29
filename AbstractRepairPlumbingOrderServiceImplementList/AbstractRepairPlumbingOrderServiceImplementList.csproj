@@ -72,13 +72,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbdtractRepairPlumbingServiceDAL.csproj">
+    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbstractRepairPlumbingServiceDAL.csproj">
       <Project>{5230bd71-1e0a-4294-ae1c-6933b964a12b}</Project>
-      <Name>AbdtractRepairPlumbingServiceDAL</Name>
+      <Name>AbstractRepairPlumbingServiceDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\AbstractRepairPlumbingOrderModel\AbstractRepairPlumbingOrderModel.csproj">
       <Project>{21da7a61-e6fa-40d3-81d8-803309b5f809}</Project>
-      <Name>AbstractRepairPlumbingModel</Name>
+      <Name>AbstractRepairPlumbingOrderModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

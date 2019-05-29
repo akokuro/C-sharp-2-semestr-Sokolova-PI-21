@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AbstractRepairOrderModel;
-using AbstractRepairPlumbingOrderServiceDAL;
-using AbstractRepairPlumbingOrderServiceDAL.Interfaces;
-using AbstractRepairPlumbingOrderServiceDAL.BindingModel;
-using AbstractRepairOrderServiceDAL.ViewModel;
+using AbstractRepairPlumbingServiceDAL;
+using AbstractRepairPlumbingServiceDAL.Interfaces;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.ViewModel;
 
 namespace AbstractRepairOrderServiceImplementList.Implementations
 {

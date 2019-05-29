@@ -1,6 +1,6 @@
-﻿using AbstractRepairOrderServiceDAL.BindingModel;
-using AbstractRepairPlumbingOrderServiceDAL.Interfaces;
-using AbstractRepairOrderServiceDAL.ViewModel;
+﻿using AbstractRepairPlumbingServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.Interfaces;
+using AbstractRepairPlumbingServiceDAL.ViewModel;
 using System;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;

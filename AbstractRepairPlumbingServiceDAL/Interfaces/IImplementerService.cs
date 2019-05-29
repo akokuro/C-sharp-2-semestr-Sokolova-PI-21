@@ -3,7 +3,7 @@ using AbstractRepairPlumbingServiceDAL.BindingModel;
 using AbstractRepairPlumbingServiceDAL.ViewModel;
 using System.Collections.Generic;
 
-namespace AbstractRepairPlumbingOrderServiceDAL.Interfaces
+namespace AbstractRepairPlumbingServiceDAL.Interfaces
 {
     [CustomInterface("Интерфейс для работы с исполнителями")]
     public interface IImplementerService

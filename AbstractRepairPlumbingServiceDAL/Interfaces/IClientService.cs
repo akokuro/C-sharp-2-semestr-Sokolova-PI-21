@@ -1,13 +1,13 @@
 ﻿using AbstractRepairPlumbingServiceDAL.Attributies;
-using AbstractRepairOrderServiceDAL.BindingModel;
-using AbstractRepairOrderServiceDAL.ViewModel;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractRepairPlumbingOrderServiceDAL.Interfaces
+namespace AbstractRepairPlumbingServiceDAL.Interfaces
 {
     [CustomInterface("Интерфейс для работы с клиентами")]
     public interface IClientService

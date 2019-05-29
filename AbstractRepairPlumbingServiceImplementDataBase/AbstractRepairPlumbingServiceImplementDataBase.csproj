@@ -106,9 +106,9 @@
       <Project>{592ef905-f058-4972-bca4-10514385f1c1}</Project>
       <Name>AbstractRepairPlumbingOrderServiceImplementList</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbdtractRepairPlumbingServiceDAL.csproj">
+    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbstractRepairPlumbingServiceDAL.csproj">
       <Project>{5230bd71-1e0a-4294-ae1c-6933b964a12b}</Project>
-      <Name>AbdtractRepairPlumbingServiceDAL</Name>
+      <Name>AbstractRepairPlumbingServiceDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractRepairPlumbingOrderServiceDAL.ViewModel
+namespace AbstractRepairPlumbingServiceDAL.ViewModel
 {
     [DataContract]
     public class OrderViewModel

@@ -7,8 +7,8 @@
     <ProjectGuid>{5230BD71-1E0A-4294-AE1C-6933B964A12B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AbdtractFoodOrderServiceDAL</RootNamespace>
-    <AssemblyName>AbdtractFoodOrderServiceDAL</AssemblyName>
+    <RootNamespace>AbstractRepairPlumbingServiceDAL</RootNamespace>
+    <AssemblyName>AbstractRepairPlumbingServiceDAL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -100,7 +100,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AbstractRepairPlumbingOrderModel\AbstractRepairPlumbingOrderModel.csproj">
       <Project>{21da7a61-e6fa-40d3-81d8-803309b5f809}</Project>
-      <Name>AbstractRepairPlumbingModel</Name>
+      <Name>AbstractRepairPlumbingOrderModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

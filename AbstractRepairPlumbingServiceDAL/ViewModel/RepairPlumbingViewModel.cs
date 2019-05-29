@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractRepairOrderServiceDAL.ViewModel
+namespace AbstractRepairPlumbingServiceDAL.ViewModel
 {
     /// <summary>
     /// Сколько сантехники требуется для проведения ремонта

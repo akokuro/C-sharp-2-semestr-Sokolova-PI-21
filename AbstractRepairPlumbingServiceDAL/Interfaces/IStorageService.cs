@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AbstractRepairPlumbingServiceDAL.Attributies;
-using AbstractRepairOrderServiceDAL.BindingModel;
-using AbstractRepairOrderServiceDAL.ViewModel;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.ViewModel;
 
-namespace AbstractRepairPlumbingOrderServiceDAL.Interfaces
+namespace AbstractRepairPlumbingServiceDAL.Interfaces
 {
     [CustomInterface("Интерфейс для работы с хранилищами")]
     public interface IStorageService

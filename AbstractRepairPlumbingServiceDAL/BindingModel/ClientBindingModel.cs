@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 
 
-namespace AbstractRepairOrderServiceDAL.BindingModel
+namespace AbstractRepairPlumbingServiceDAL.BindingModel
 {
     [DataContract]
     /// <summary>

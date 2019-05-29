@@ -1,8 +1,7 @@
 ﻿using AbstractRepairPlumbingServiceDAL.ViewModel;
-using AbstractRepairPlumbingOrderServiceDAL.BindingModel;
-using AbstractRepairPlumbingOrderServiceDAL.Interfaces;
-using AbstractRepairPlumbingOrderServiceDAL.ViewModel;
-using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.Interfaces;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
 using AbstractRepairPlumbingRestApi.Services;
 using System;
 using System.Collections.Generic;

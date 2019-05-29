@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AbstractRepairPlumbingServiceDAL.Attributies;
-using AbstractRepairOrderServiceDAL.BindingModel;
-using AbstractRepairOrderServiceDAL.ViewModel;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.ViewModel;
 
-namespace AbstractRepairPlumbingOrderServiceDAL.Interfaces
+namespace AbstractRepairPlumbingServiceDAL.Interfaces
 {
     [CustomInterface("Интерфейс для работы с письмами")]
     public interface IPlumbingService

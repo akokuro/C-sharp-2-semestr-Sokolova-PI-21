@@ -1,7 +1,7 @@
-﻿using AbstractRepairPlumbingOrderServiceDAL.BindingModel;
-using AbstractRepairPlumbingOrderServiceDAL.Interfaces;
+﻿using AbstractRepairPlumbingServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.Interfaces;
 using AbstractRepairOrderModel;
-using AbstractRepairOrderServiceDAL.ViewModel;
+using AbstractRepairPlumbingServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

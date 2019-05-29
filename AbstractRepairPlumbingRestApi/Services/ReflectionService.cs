@@ -11,7 +11,7 @@ namespace AbstractRepairPlumbingRestApi.Services
         public List<string> GetInfoByAssembly()
         {
             List<string> infoes = new List<string>();
-            Assembly assembly = GetAssembly("AbdtractRepairPlumbingServiceDAL");
+            Assembly assembly = GetAssembly("AbstractRepairPlumbingServiceDAL");
             List<Type> interfaces = GetInterfases(assembly);
             foreach (var inter in interfaces)
             {

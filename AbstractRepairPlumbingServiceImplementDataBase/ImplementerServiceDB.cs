@@ -1,6 +1,6 @@
 ﻿using AbstractRepairPlumbingServiceDAL.BindingModel;
 using AbstractRepairPlumbingServiceDAL.ViewModel;
-using AbstractRepairPlumbingOrderServiceDAL.Interfaces;
+using AbstractRepairPlumbingServiceDAL.Interfaces;
 using AbstractFoodOrderModel;
 using AbstractRepairOrderModel;
 using System;

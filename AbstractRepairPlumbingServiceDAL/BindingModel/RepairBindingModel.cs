@@ -1,8 +1,8 @@
-﻿using AbstractRepairOrderServiceDAL.BindingModel;
+﻿using AbstractRepairPlumbingServiceDAL.BindingModel;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace AbstractRepairPlumbingOrderServiceDAL.BindingModel
+namespace AbstractRepairPlumbingServiceDAL.BindingModel
 {
     [DataContract]
     public class RepairBindingModel
