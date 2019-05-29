@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbdtractFoodOrderServiceDAL.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,7 +16,14 @@ namespace AbstractRepairOrderServiceDAL.ViewModel
     {
         [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
+        public string Mail { get; set; }
+
         [DataMember]
         public string ClientFIO { get; set; }
+
+        [DataMember]
+        public List<MessageInfoViewModel> Messages { get; set; }
     }
 }

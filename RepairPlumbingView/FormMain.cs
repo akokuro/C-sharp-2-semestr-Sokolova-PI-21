@@ -118,8 +118,7 @@ namespace RepairOrderView
                 }
             }
         }
-        private void загруженностьСкладовToolStripMenuItem_Click(object sender, EventArgs
-       e)
+        private void загруженностьСкладовToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new FormStoragesLoad();
             form.ShowDialog();
@@ -148,6 +147,12 @@ namespace RepairOrderView
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
             }
+        }
+
+        private void письмаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormMails();
+            form.ShowDialog();
         }
     }
 }

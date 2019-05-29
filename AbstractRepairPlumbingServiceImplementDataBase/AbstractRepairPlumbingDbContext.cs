@@ -22,5 +22,6 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
         public virtual DbSet<Storage> Storages { get; set; }
         public virtual DbSet<StoragePlumbing> StoragePlumbings { get; set; }
         public virtual DbSet<Implementer> Implementers { get; set; }
+        public virtual DbSet<MessageInfo> MessageInfos { get; set; }
     }
 }

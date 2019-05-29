@@ -1,4 +1,5 @@
-﻿using AbdtractRepairOrderServiceDAL.Interfaces;
+﻿using AbdtractFoodOrderServiceDAL.ViewModel;
+using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
@@ -20,7 +21,8 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
             List<ClientViewModel> result = context.Clients.Select(rec => new ClientViewModel
             {
                 Id = rec.Id,
-                ClientFIO = rec.ClientFIO
+                ClientFIO = rec.ClientFIO,
+                Mail = rec.Mail
             }).ToList();
             return result;
         }
@@ -32,7 +34,15 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 return new ClientViewModel
                 {
                     Id = element.Id,
-                    ClientFIO = element.ClientFIO
+                    ClientFIO = element.ClientFIO,
+                    Mail = element.Mail,
+                    Messages = context.MessageInfos.Where(recM => recM.ClientId == element.Id).Select(recM => new MessageInfoViewModel
+                    {
+                        MessageId = recM.MessageId,
+                        DateDelivery = recM.DateDelivery,
+                        Subject = recM.Subject,
+                        Body = recM.Body
+                    }).ToList()
                 };
             }
             throw new Exception("Элемент не найден");
@@ -47,7 +57,8 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
             }
             context.Clients.Add(new Client
             {
-                ClientFIO = model.ClientFIO
+                ClientFIO = model.ClientFIO,
+                Mail = model.Mail
             });
             context.SaveChanges();
         }
@@ -65,6 +76,7 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 throw new Exception("Элемент не найден");
             }
             element.ClientFIO = model.ClientFIO;
+            element.Mail = model.Mail;
             context.SaveChanges();
         }
         public void DelElement(int id)

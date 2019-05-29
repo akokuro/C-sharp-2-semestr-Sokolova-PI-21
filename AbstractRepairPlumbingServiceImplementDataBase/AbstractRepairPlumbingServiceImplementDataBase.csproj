@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,6 +68,7 @@
     <Compile Include="ClientServiceDB.cs" />
     <Compile Include="ImplementerServiceDB.cs" />
     <Compile Include="MainServiceDB.cs" />
+    <Compile Include="MessageInfoServiceDB.cs" />
     <Compile Include="Migrations\201903131345151_FirstMigration.cs" />
     <Compile Include="Migrations\201903131345151_FirstMigration.Designer.cs">
       <DependentUpon>201903131345151_FirstMigration.cs</DependentUpon>
@@ -78,6 +80,10 @@
     <Compile Include="Migrations\201905061100456_AddImplementMigration.cs" />
     <Compile Include="Migrations\201905061100456_AddImplementMigration.Designer.cs">
       <DependentUpon>201905061100456_AddImplementMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905291511503_AddMessageInfo.cs" />
+    <Compile Include="Migrations\201905291511503_AddMessageInfo.Designer.cs">
+      <DependentUpon>201905291511503_AddMessageInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlumbingServiceDB.cs" />
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905061100456_AddImplementMigration.resx">
       <DependentUpon>201905061100456_AddImplementMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905291511503_AddMessageInfo.resx">
+      <DependentUpon>201905291511503_AddMessageInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

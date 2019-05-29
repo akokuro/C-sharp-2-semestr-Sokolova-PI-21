@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+
 
 namespace AbstractRepairOrderServiceDAL.BindingModel
 {
@@ -10,6 +11,10 @@ namespace AbstractRepairOrderServiceDAL.BindingModel
     {
         [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
+        public string Mail { get; set; }
+
         [DataMember]
         public string ClientFIO { get; set; }
     }

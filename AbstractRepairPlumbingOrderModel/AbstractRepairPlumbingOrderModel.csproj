@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Implementer.cs" />
+    <Compile Include="MessageInfo.cs" />
     <Compile Include="Repair.cs" />
     <Compile Include="RepairPlumbing.cs" />
     <Compile Include="Plumbing.cs" />

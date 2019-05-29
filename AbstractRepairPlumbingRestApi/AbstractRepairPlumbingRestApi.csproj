@@ -114,6 +114,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ImplementerController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\MessageInfoController.cs" />
     <Compile Include="Controllers\PlumbingController.cs" />
     <Compile Include="Controllers\RepairController.cs" />
     <Compile Include="Controllers\ReportController.cs" />

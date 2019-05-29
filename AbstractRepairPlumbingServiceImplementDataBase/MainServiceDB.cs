@@ -4,10 +4,13 @@ using AbdtractRepairOrderServiceDAL.ViewModel;
 using AbstractRepairOrderModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.SqlServer;
 using System.Linq;
-using System.Data.Entity;
+using System.Net;
+using System.Net.Mail;
 
 namespace AbstractRepairPlumbingServiceImplementDataBase
 {
@@ -48,7 +51,7 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
         }
         public void CreateOrder(OrderBindingModel model)
         {
-            context.Orders.Add(new Order
+            var order = new Order
             {
                 ClientId = model.ClientId,
                 RepairId = model.RepairId,
@@ -56,8 +59,11 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 Count = model.Count,
                 Sum = model.Sum,
                 Status = OrderStatus.Принят
-            });
+            };
+            context.Orders.Add(order);
             context.SaveChanges();
+            var client = context.Clients.FirstOrDefault(x => x.Id == model.ClientId);
+            SendEmail(client.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} создан успешно", order.Id, order.DateCreate.ToShortDateString()));
         }
         public void TakeOrderInWork(OrderBindingModel model)
         {
@@ -107,6 +113,8 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                     element.DateImplement = DateTime.Now;
                     element.Status = OrderStatus.Выполняется;
                     context.SaveChanges();
+                    SendEmail(element.Client.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} передеан в работу",
+                              element.Id, element.DateCreate.ToShortDateString()));
                     transaction.Commit();
                 }
                 catch (Exception)
@@ -132,6 +140,8 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
             }
             element.Status = OrderStatus.Готов;
             context.SaveChanges();
+            SendEmail(element.Client.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} передан на оплату", 
+                      element.Id, element.DateCreate.ToShortDateString()));
         }
         public void PayOrder(OrderBindingModel model)
         {
@@ -146,6 +156,8 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
             }
             element.Status = OrderStatus.Оплачен;
             context.SaveChanges();
+            SendEmail(element.Client.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} оплачен успешно",
+                      element.Id, element.DateCreate.ToShortDateString()));
         }
         public void PutComponentOnStorage(StoragePlumbingBindingModel model)
         {
@@ -166,7 +178,6 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
             }
             context.SaveChanges();
         }
-
         public List<OrderViewModel> GetFreeOrders()
         {
             List<OrderViewModel> result = context.Orders.Where(x => x.Status == OrderStatus.Принят || x.Status == OrderStatus.НедостаточноРесурсов)
@@ -176,6 +187,37 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 }).ToList();
             return result;
 
+        }
+        private void SendEmail(string mailAddress, string subject, string text)
+        {
+            MailMessage objMailMessage = new MailMessage();
+            SmtpClient objSmtpClient = null;
+            try
+            {
+                objMailMessage.From = new MailAddress(ConfigurationManager.AppSettings["MailLogin"]);
+                objMailMessage.To.Add(new MailAddress(mailAddress));
+                objMailMessage.Subject = subject;
+                objMailMessage.Body = text;
+                objMailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
+                objMailMessage.BodyEncoding = System.Text.Encoding.UTF8;
+                objSmtpClient = new SmtpClient("smtp.gmail.com", 587);
+                objSmtpClient.UseDefaultCredentials = false;
+                objSmtpClient.EnableSsl = true;
+                objSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                objSmtpClient.Credentials = new
+               NetworkCredential(ConfigurationManager.AppSettings["MailLogin"],
+               ConfigurationManager.AppSettings["MailPassword"]);
+                objSmtpClient.Send(objMailMessage);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objMailMessage = null;
+                objSmtpClient = null;
+            }
         }
     }
 }
