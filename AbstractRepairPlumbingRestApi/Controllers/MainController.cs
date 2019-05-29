@@ -1,7 +1,11 @@
-﻿using AbdtractRepairOrderServiceDAL.BindingModel;
+﻿using AbdtractFoodOrderServiceDAL.ViewModel;
+using AbdtractRepairOrderServiceDAL.BindingModel;
 using AbdtractRepairOrderServiceDAL.Interfaces;
+using AbdtractRepairOrderServiceDAL.ViewModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairPlumbingRestApi.Services;
 using System;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace AbstractRepairPlumbingRestApi.Controllers
@@ -37,9 +41,9 @@ namespace AbstractRepairPlumbingRestApi.Controllers
             _service.PayOrder(model);
         }
         [HttpPost]
-        public void PutComponentOnStock(StockComponentBindingModel model)
+        public void PutComponentOnStorage(StoragePlumbingBindingModel model)
         {
-            _service.PutComponentOnStock(model);
+            _service.PutComponentOnStorage(model);
         }
         [HttpPost]
         public void StartWork()

@@ -39,7 +39,9 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 Count = rec.Count,
                 Sum = rec.Sum,
                 ClientFIO = rec.Client.ClientFIO,
-                RepairName = rec.Repair.RepairName
+                RepairName = rec.Repair.RepairName,
+                ImplementerId = rec.ImplementerId,
+                ImplementerName = rec.Implementer.ImplementerFIO
             })
             .ToList();
             return result;
@@ -61,10 +63,9 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
         {
             using (var transaction = context.Database.BeginTransaction())
             {
+                Order element = context.Orders.FirstOrDefault(rec => rec.Id ==  model.Id);
                 try
                 {
-                    Order element = context.Orders.FirstOrDefault(rec => rec.Id ==
-                   model.Id);
                     if (element == null)
                     {
                         throw new Exception("Элемент не найден");
@@ -102,6 +103,7 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                             throw new Exception("Не достаточно компонента " + productPlumbing.Plumbing.PlumbingName + " требуется " + productPlumbing.Count + ", нехватает " + countOnStorages);
                         }
                     }
+                    element.ImplementerId = model.ImplementerId;
                     element.DateImplement = DateTime.Now;
                     element.Status = OrderStatus.Выполняется;
                     context.SaveChanges();
@@ -110,6 +112,9 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 catch (Exception)
                 {
                     transaction.Rollback();
+                    element.Status = OrderStatus.НедостаточноРесурсов;
+                    context.SaveChanges();
+                    transaction.Commit();
                     throw;
                 }
             }
@@ -169,7 +174,8 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
                 {
                     Id = rec.Id
                 }).ToList();
-            return result;
+            return result;
+
         }
     }
 }

@@ -88,15 +88,11 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
         }
         public ImplementerViewModel GetFreeWorker()
         {
-            var ordersWorker = context.Implementers
-            .Select(x => new
+            var ordersWorker = context.Implementers.Select(x => new
             {
                 ImplId = x.Id,
-                Count = context.Orders.Where(o => o.Status == OrderStatus.Выполняется
-     && o.ImplementerId == x.Id).Count()
-            })
-            .OrderBy(x => x.Count)
-            .FirstOrDefault();
+                Count = context.Orders.Where(o => o.Status == OrderStatus.Выполняется && o.ImplementerId == x.Id).Count()
+            }).OrderBy(x => x.Count).FirstOrDefault();
             if (ordersWorker != null)
             {
                 return GetElement(ordersWorker.ImplId);
