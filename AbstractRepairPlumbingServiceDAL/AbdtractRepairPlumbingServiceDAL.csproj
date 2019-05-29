@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindingModel\ClientBindingModel.cs" />
+    <Compile Include="BindingModel\ImplementerBindingModel.cs" />
     <Compile Include="BindingModel\RepairBindingModel.cs" />
     <Compile Include="BindingModel\RepairPlumbingBindingModel.cs" />
     <Compile Include="BindingModel\PlumbingBindingModel.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="BindingModel\StorageBindingModel.cs" />
     <Compile Include="BindingModel\StoragePlumbingBindingModel.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
+    <Compile Include="Interfaces\IImplementerService.cs" />
     <Compile Include="Interfaces\IRepairService.cs" />
     <Compile Include="Interfaces\IPlumbingService.cs" />
     <Compile Include="Interfaces\IMainService.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ClientOrdersModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
+    <Compile Include="ViewModel\ImplementerViewModel.cs" />
     <Compile Include="ViewModel\RepairViewModel.cs" />
     <Compile Include="ViewModel\RepairPlumbingViewModel.cs" />
     <Compile Include="ViewModel\PlumbingViewModel.cs" />

@@ -100,7 +100,8 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                 }
             }
             element.DateImplement = DateTime.Now;
-            element.Status = OrderStatus.Выполняется;
+            element.Status = OrderStatus.Выполняется;
+
         }
         public void FinishOrder(OrderBindingModel model)
         {
@@ -148,7 +149,13 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                     ComponentId = model.PlumbingId,
                     Count = model.Count
                 });
-            }
+            }
+
+        }
+
+        public List<OrderViewModel> GetFreeOrders()
+        {
+            throw new NotImplementedException();
         }
     }
 }

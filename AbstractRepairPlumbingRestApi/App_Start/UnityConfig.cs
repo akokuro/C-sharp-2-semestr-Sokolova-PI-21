@@ -54,6 +54,7 @@ namespace AbstractRepairPlumbingRestApi
             container.RegisterType<IStorageService, StorageServiceDB>(new HierarchicalLifetimeManager());
             container.RegisterType<IMainService, MainServiceDB>(new HierarchicalLifetimeManager());
             container.RegisterType<IReportService, ReportServiceDB>(new HierarchicalLifetimeManager());
+            container.RegisterType<IImplementerService, ImplementerServiceDB>(new HierarchicalLifetimeManager());
         }
     }
 }

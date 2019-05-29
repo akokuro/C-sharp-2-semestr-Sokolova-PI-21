@@ -62,7 +62,7 @@ namespace RepairOrderView
             }
             try
             {
-                APIClient.PostRequest<StoragePlumbingBindingModel, bool>("api/Main/PutPlumbingOnStorage", new StoragePlumbingBindingModel
+                APIClient.PostRequest<StoragePlumbingBindingModel, bool>("api/Main/PutComponentOnStorage", new StoragePlumbingBindingModel
                 {
                     PlumbingId = Convert.ToInt32(comboBoxPlumbing.SelectedValue),
                     StorageId = Convert.ToInt32(comboBoxStorage.SelectedValue),

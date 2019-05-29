@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="AbstractRepairPlumbingDbContext.cs" />
     <Compile Include="ClientServiceDB.cs" />
+    <Compile Include="ImplementerServiceDB.cs" />
     <Compile Include="MainServiceDB.cs" />
     <Compile Include="Migrations\201903131345151_FirstMigration.cs" />
     <Compile Include="Migrations\201903131345151_FirstMigration.Designer.cs">
@@ -73,6 +74,10 @@
     <Compile Include="Migrations\201904060716414_Second.cs" />
     <Compile Include="Migrations\201904060716414_Second.Designer.cs">
       <DependentUpon>201904060716414_Second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905061100456_AddImplementMigration.cs" />
+    <Compile Include="Migrations\201905061100456_AddImplementMigration.Designer.cs">
+      <DependentUpon>201905061100456_AddImplementMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlumbingServiceDB.cs" />
@@ -111,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904060716414_Second.resx">
       <DependentUpon>201904060716414_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905061100456_AddImplementMigration.resx">
+      <DependentUpon>201905061100456_AddImplementMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,4 +1,5 @@
-﻿using AbstractRepairOrderModel;
+﻿using AbstractFoodOrderModel;
+using AbstractRepairOrderModel;
 using System.Data.Entity;
 
 namespace AbstractRepairPlumbingServiceImplementDataBase
@@ -20,5 +21,6 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
         public virtual DbSet<RepairPlumbing> RepairPlumbings { get; set; }
         public virtual DbSet<Storage> Storages { get; set; }
         public virtual DbSet<StoragePlumbing> StoragePlumbings { get; set; }
+        public virtual DbSet<Implementer> Implementers { get; set; }
     }
 }
