@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace AbdtractRepairOrderServiceDAL.BindingModel
+namespace AbstractRepairPlumbingOrderServiceDAL.BindingModel
 {
     [DataContract]
     public class RepairBindingModel

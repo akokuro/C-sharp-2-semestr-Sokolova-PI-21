@@ -1,7 +1,7 @@
-﻿using AbdtractFoodOrderServiceDAL.ViewModel;
-using AbdtractRepairOrderServiceDAL.BindingModel;
-using AbdtractRepairOrderServiceDAL.Interfaces;
-using AbdtractRepairOrderServiceDAL.ViewModel;
+﻿using AbstractRepairPlumbingServiceDAL.ViewModel;
+using AbstractRepairPlumbingOrderServiceDAL.BindingModel;
+using AbstractRepairPlumbingOrderServiceDAL.Interfaces;
+using AbstractRepairPlumbingOrderServiceDAL.ViewModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairPlumbingRestApi.Services;
 using System;
@@ -58,6 +58,17 @@ namespace AbstractRepairPlumbingRestApi.Controllers
                 }
                 new WorkImplementer(_service, _serviceImplementer, impl.Id, order.Id);
             }
+        }
+        [HttpGet]
+        public IHttpActionResult GetInfo()
+        {
+            ReflectionService service = new ReflectionService();
+            var list = service.GetInfoByAssembly();
+            if (list == null)
+            {
+                InternalServerError(new Exception("Нет данных"));
+            }
+            return Ok(list);
         }
     }
 }

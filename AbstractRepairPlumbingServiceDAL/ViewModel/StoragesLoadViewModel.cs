@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractFoodOrderServiceDAL.ViewModel
+namespace AbstractRepairPlumbingServiceDAL.ViewModel
 {
     [DataContract]
     public class StoragesLoadViewModel

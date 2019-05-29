@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace AbdtractFoodOrderServiceDAL.BindingModel
+namespace AbstractRepairPlumbingServiceDAL.BindingModel
 {
     [DataContract]
     public class ImplementerBindingModel

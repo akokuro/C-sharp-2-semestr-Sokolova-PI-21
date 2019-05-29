@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractRepairOrderServiceDAL.BindingModel
+namespace AbstractRepairPlumbingOrderServiceDAL.BindingModel
 {
     [DataContract]
     public class OrderBindingModel

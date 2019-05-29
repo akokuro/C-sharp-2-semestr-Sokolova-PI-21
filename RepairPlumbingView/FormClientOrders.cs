@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.Reporting.WinForms;
 using System.Windows.Forms;
-using AbdtractFoodOrderServiceDAL.BindingModel;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
 using System.Collections.Generic;
-using AbdtractFoodOrderServiceDAL.ViewModel;
+using AbstractRepairPlumbingServiceDAL.ViewModel;
 
 namespace RepairOrderView
 {

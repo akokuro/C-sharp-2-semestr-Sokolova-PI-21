@@ -1,5 +1,5 @@
-﻿using AbdtractRepairOrderServiceDAL.BindingModel;
-using AbdtractRepairOrderServiceDAL.Interfaces;
+﻿using AbstractRepairPlumbingOrderServiceDAL.BindingModel;
+using AbstractRepairPlumbingOrderServiceDAL.Interfaces;
 using System;
 using System.Threading;
 namespace AbstractRepairPlumbingRestApi.Services

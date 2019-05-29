@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractFoodOrderServiceDAL.BindingModel
+namespace AbstractRepairPlumbingServiceDAL.BindingModel
 {
     [DataContract]
     public class MessageInfoBindingModel

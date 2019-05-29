@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace AbdtractFoodOrderServiceDAL.ViewModel
+namespace AbstractRepairPlumbingServiceDAL.ViewModel
 {
     [DataContract]
     public class ImplementerViewModel
