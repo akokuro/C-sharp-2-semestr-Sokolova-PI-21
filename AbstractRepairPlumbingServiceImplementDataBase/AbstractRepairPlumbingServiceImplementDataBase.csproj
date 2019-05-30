@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201905291511503_AddMessageInfo.Designer.cs">
       <DependentUpon>201905291511503_AddMessageInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905301218535_MiddleMigration.cs" />
+    <Compile Include="Migrations\201905301218535_MiddleMigration.Designer.cs">
+      <DependentUpon>201905301218535_MiddleMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlumbingServiceDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905291511503_AddMessageInfo.resx">
       <DependentUpon>201905291511503_AddMessageInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905301218535_MiddleMigration.resx">
+      <DependentUpon>201905301218535_MiddleMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
