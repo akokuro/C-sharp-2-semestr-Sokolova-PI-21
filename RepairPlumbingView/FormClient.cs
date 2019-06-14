@@ -1,5 +1,5 @@
 ﻿using AbstractRepairOrderServiceDAL.BindingModel;
-using AbdtractRepairOrderServiceDAL.Interfaces;
+using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;

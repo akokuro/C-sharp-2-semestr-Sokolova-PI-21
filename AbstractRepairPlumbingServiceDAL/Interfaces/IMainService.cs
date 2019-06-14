@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractRepairOrderServiceDAL.Interfaces
+namespace AbstractRepairOrderServiceDAL.Interfaces
 {
     public interface IMainService
     {

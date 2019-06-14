@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 
-namespace AbdtractRepairOrderServiceDAL.Interfaces
+namespace AbstractRepairOrderServiceDAL.Interfaces
 {
     public interface IPlumbingService
     {

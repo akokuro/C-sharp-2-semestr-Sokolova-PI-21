@@ -1,0 +1,81 @@
+﻿@model IEnumerable<AbstractRepairOrderServiceDAL.ViewModel.OrderViewModel>
+@{
+    ViewBag.Title = "IndexOrder";
+}
+
+<h2>IndexOrder</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateOrder")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientFIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateImplement)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientFIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateImplement)
+            </td>
+            <td>
+                @Html.ActionLink("Отдать на выполнение", "SetStatus", new { id = item.Id, status = "Processing" }) |
+                @Html.ActionLink("Заказ готов", "SetStatus", new { id = item.Id, status = "Ready" }) |
+                @Html.ActionLink("Заказ оплачен", "SetStatus", new { id = item.Id, status = "Paid" })
+            </td>
+        </tr>
+    }
+
+</table>

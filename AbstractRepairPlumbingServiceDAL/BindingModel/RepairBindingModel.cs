@@ -1,7 +1,7 @@
 ﻿using AbstractRepairOrderServiceDAL.BindingModel;
 using System.Collections.Generic;
 
-namespace AbdtractRepairOrderServiceDAL.BindingModel
+namespace AbstractRepairOrderServiceDAL.BindingModel
 {
     public class RepairBindingModel
     {
