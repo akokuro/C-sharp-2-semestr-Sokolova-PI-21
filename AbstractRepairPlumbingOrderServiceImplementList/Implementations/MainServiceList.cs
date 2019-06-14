@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using AbstractRepairOrderModel;
 using AbdtractRepairOrderServiceDAL.Interfaces;
-using AbdtractRepairOrderServiceDAL.BindingModel;
-using AbdtractRepairOrderServiceDAL.ViewModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairOrderServiceDAL.Interfaces;
+using AbstractRepairOrderServiceDAL.ViewModel;
 
 namespace AbstractRepairOrderServiceImplementList.Implementations
 {
@@ -100,7 +100,8 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                 }
             }
             element.DateImplement = DateTime.Now;
-            element.Status = OrderStatus.Выполняется;
+            element.Status = OrderStatus.Выполняется;
+
         }
         public void FinishOrder(OrderBindingModel model)
         {
@@ -148,7 +149,8 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                     ComponentId = model.ComponentId,
                     Count = model.Count
                 });
-            }
+            }
+
         }
     }
 }

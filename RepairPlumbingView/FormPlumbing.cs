@@ -1,4 +1,4 @@
-﻿using AbdtractRepairOrderServiceDAL.Interfaces;
+﻿using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;

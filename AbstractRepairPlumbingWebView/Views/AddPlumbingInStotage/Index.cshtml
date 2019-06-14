@@ -1,0 +1,55 @@
+﻿@using AbstractRepairOrderServiceDAL.BindingModel
+@model AbstractRepairOrderServiceDAL.ViewModel.StorageComponentViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("AddPlumbingPost", "AddPlumbingInStorage", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>StorageIngredientViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StorageId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col md-10">
+                @Html.DropDownList("StorageId", ViewBag.Storages as SelectList)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComponentName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col md-10">
+                @Html.DropDownList("ComponentId", ViewBag.Components as SelectList)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Count, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "IndexOrder")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

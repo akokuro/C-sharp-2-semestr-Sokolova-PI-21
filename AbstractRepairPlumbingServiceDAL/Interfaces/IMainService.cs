@@ -1,13 +1,12 @@
-﻿using AbdtractRepairOrderServiceDAL.BindingModel;
-using AbdtractRepairOrderServiceDAL.ViewModel;
-using AbstractRepairOrderServiceDAL.BindingModel;
+﻿using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractRepairOrderServiceDAL.Interfaces
+namespace AbstractRepairOrderServiceDAL.Interfaces
 {
     public interface IMainService
     {

@@ -1,0 +1,50 @@
+﻿@model AbstractRepairOrderServiceDAL.ViewModel.StorageViewModel
+
+@{
+    ViewBag.Title = "Storages";
+}
+
+<h2>Storages</h2>
+
+<div>
+    <h4>StorageViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StorageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StorageName)
+        </dd>
+
+    </dl>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StorageComponents[0].ComponentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StorageComponents[0].Count)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.StorageComponents)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComponentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit") |
+    @Html.ActionLink("Back to List", "IndexStorage")
+</p>

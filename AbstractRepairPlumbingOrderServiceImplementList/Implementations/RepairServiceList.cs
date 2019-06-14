@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AbstractRepairOrderModel;
-using AbdtractRepairOrderServiceDAL;
-using AbdtractRepairOrderServiceDAL.Interfaces;
-using AbdtractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.ViewModel;
 
 namespace AbstractRepairOrderServiceImplementList.Implementations
