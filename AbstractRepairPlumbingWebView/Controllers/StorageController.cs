@@ -76,7 +76,7 @@ namespace AbstractRepairPlumbingWebView.Controllers
         [HttpPost]
         public ActionResult AddPlumbingPost()
         {
-            _mainService.PutComponentOnStorage(new StorageComponentBindingModel
+            _mainService.PutComponentOnStorage(new StoragePlumbingBindingModel
             {
                 ComponentId = int.Parse(Request["PlumbingId"]),
                 StorageId = int.Parse(Request["StorageId"]),

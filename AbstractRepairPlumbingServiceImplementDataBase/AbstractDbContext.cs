@@ -5,7 +5,7 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
 {
     public class AbstractRepairPlumbingDbContext : DbContext
     {
-        public AbstractRepairPlumbingDbContext() : base("AbstractDatabase")
+        public AbstractRepairPlumbingDbContext() : base("AbstractDb")
         {
             //настройки конфигурации для entity
             Configuration.ProxyCreationEnabled = false;

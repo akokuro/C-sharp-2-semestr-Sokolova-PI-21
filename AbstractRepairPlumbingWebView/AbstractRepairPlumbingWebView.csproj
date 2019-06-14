@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -194,7 +200,7 @@
     <Content Include="Views\Storage\CreateStorage.cshtml" />
     <Content Include="Views\Storage\Storages.cshtml" />
     <Content Include="Views\Storage\IndexStorage.cshtml" />
-    <Content Include="Views\AddPlumbingInStotage\Index.cshtml" />
+    <Content Include="Views\AddPlumbingInStorage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -227,6 +233,10 @@
     <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbdtractRepairPlumbingServiceDAL.csproj">
       <Project>{5230bd71-1e0a-4294-ae1c-6933b964a12b}</Project>
       <Name>AbdtractRepairPlumbingOrderServiceDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbstractRepairPlumbingServiceImplementDataBase\AbstractRepairPlumbingServiceImplementDataBase.csproj">
+      <Project>{b0ee48b7-8d49-40fb-9c44-5d7d1b8b0028}</Project>
+      <Name>AbstractRepairPlumbingServiceImplementDataBase</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,13 +1,12 @@
-﻿using AbdtractRepairOrderServiceDAL.BindingModel;
-using AbdtractRepairOrderServiceDAL.Interfaces;
-using AbdtractRepairOrderServiceDAL.ViewModel;
-using AbstractRepairOrderModel;
+﻿using AbstractRepairOrderModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Data.Entity;
+using AbstractRepairOrderServiceDAL.Interfaces;
+using AbstractRepairOrderServiceDAL.ViewModel;
 
 namespace AbstractRepairPlumbingServiceImplementDataBase
 {
