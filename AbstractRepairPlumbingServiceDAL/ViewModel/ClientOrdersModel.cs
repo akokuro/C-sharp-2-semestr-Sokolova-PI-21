@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractFoodOrderServiceDAL.ViewModel
+namespace AbdtractRepairPlumbingServiceDAL.ViewModel
 {
     public class ClientOrdersModel
     {

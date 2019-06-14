@@ -143,6 +143,7 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PlumbingController.cs" />
     <Compile Include="Controllers\RepairController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,6 +202,8 @@
     <Content Include="Views\Storage\Storages.cshtml" />
     <Content Include="Views\Storage\IndexStorage.cshtml" />
     <Content Include="Views\AddPlumbingInStorage\Index.cshtml" />
+    <Content Include="Views\Report\ClientOrders.cshtml" />
+    <Content Include="Views\Report\StoragesLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

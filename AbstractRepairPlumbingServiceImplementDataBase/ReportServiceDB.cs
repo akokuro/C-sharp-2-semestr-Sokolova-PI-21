@@ -7,10 +7,11 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Word;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
-using System.IO;using AbdtractFoodOrderServiceDAL.Interfaces;
-using AbdtractFoodOrderServiceDAL.BindingModel;
-using AbdtractFoodOrderServiceDAL.ViewModel;
+using System.IO;
+using AbdtractRepairPlumbingServiceDAL.Interfaces;
+using AbdtractRepairPlumbingServiceDAL.ViewModel;
 using System.util;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
 
 namespace AbstractRepairPlumbingServiceImplementDataBase
 {
@@ -233,6 +234,7 @@ namespace AbstractRepairPlumbingServiceImplementDataBase
             {
                 //закрываем
                 excel.Quit();
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excel);
             }
         }
         public List<ClientOrdersModel> GetClientOrders(ReportBindingModel model)

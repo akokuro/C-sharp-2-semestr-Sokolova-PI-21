@@ -1,10 +1,12 @@
 using AbdtractRepairOrderServiceDAL.Interfaces;
+using AbdtractRepairPlumbingServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceImplementList.Implementations;
 using AbstractRepairPlumbingServiceImplementDataBase;
 using System;
 using System.Data.Entity;
 using Unity;
+using Unity.Lifetime;
 
 namespace AbstractRepairPlumbingWebView
 {
@@ -46,12 +48,14 @@ namespace AbstractRepairPlumbingWebView
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<DbContext, AbstractRepairPlumbingDbContext>();
-            container.RegisterType<IClientService, ClientServiceDB>();
-            container.RegisterType<IRepairService, RepairServiceDB>();
-            container.RegisterType<IPlumbingService, PlumbingServiceDB>();
-            container.RegisterType<IMainService, MainServiceDB>();
-            container.RegisterType<IStorageService, StorageServiceDB>();
+
+            container.RegisterType<DbContext, AbstractRepairPlumbingDbContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<IClientService, ClientServiceDB>(new HierarchicalLifetimeManager());
+            container.RegisterType<IRepairService, RepairServiceDB>(new HierarchicalLifetimeManager());
+            container.RegisterType<IPlumbingService, PlumbingServiceDB>(new HierarchicalLifetimeManager());
+            container.RegisterType<IMainService, MainServiceDB>(new HierarchicalLifetimeManager());
+            container.RegisterType<IStorageService, StorageServiceDB>(new HierarchicalLifetimeManager());
+            container.RegisterType<IReportService, ReportServiceDB>(new HierarchicalLifetimeManager());
         }
     }
 }

@@ -2,7 +2,7 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AbdtractFoodOrderServiceDALViewModel">
+    <DataSource Name="AbdtractRepairPlumbingServiceDALViewModel">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
@@ -13,7 +13,7 @@
   <DataSets>
     <DataSet Name="DataSetOrders">
       <Query>
-        <DataSourceName>AbdtractFoodOrderServiceDALViewModel</DataSourceName>
+        <DataSourceName>AbdtractRepairPlumbingServiceDALViewModel</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -43,9 +43,9 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>AbdtractFoodOrderServiceDAL.ViewModel</rd:DataSetName>
+        <rd:DataSetName>AbdtractRepairPlumbingServiceDAL.ViewModel</rd:DataSetName>
         <rd:TableName>ClientOrdersModel</rd:TableName>
-        <rd:ObjectDataSourceType>AbdtractFoodOrderServiceDAL.ViewModel.ClientOrdersModel, AbdtractFoodOrderServiceDAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:ObjectDataSourceType>AbdtractRepairPlumbingServiceDAL.ViewModel.ClientOrdersModel, AbdtractRepairPlumbingServiceDAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

@@ -1,12 +1,12 @@
-﻿using AbdtractFoodOrderServiceDAL.BindingModel;
-using AbdtractFoodOrderServiceDAL.ViewModel;
+﻿using AbdtractRepairPlumbingServiceDAL.ViewModel;
+using AbstractRepairPlumbingServiceDAL.BindingModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractFoodOrderServiceDAL.Interfaces
+namespace AbdtractRepairPlumbingServiceDAL.Interfaces
 {
     public interface IReportService
     {

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AbdtractRepairPlumbingServiceDAL.ViewModel.StoragesLoadViewModel>
+@{
+    ViewBag.Title = "StoragesLoad";
+}
+
+<h2>StoragesLoad</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Storage
+        </th>
+        <th>
+            Plumbing
+        </th>
+        <th>
+            Count
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.StorageName);
+        </th>
+            
+        <th>
+        </th>
+        <th>
+            
+        </th>
+    </tr>
+        
+    foreach (var plumb in item.Plumbings)
+    {
+    <tr>
+        <th>
+            -
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Plumbings);
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.TotalCount);
+        </th>
+    </tr>
+    }
+}
+</table>

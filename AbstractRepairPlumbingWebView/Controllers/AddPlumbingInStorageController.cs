@@ -37,7 +37,7 @@ namespace AbstractRepairPlumbingWebView.Controllers
         {
             _service.PutComponentOnStorage(new StoragePlumbingBindingModel
             {
-                ComponentId = int.Parse(Request["ComponentId"]),
+                PlumbingId = int.Parse(Request["PlumbingId"]),
                 StorageId = int.Parse(Request["StorageId"]),
                 Count = int.Parse(Request["Count"])
             });
