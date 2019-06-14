@@ -1,8 +1,6 @@
-﻿using AbdtractFoodOrderServiceDAL.BindingModel;
-using AbdtractFoodOrderServiceDAL.Interfaces;
-using AbdtractRepairOrderServiceDAL.BindingModel;
-using AbdtractRepairOrderServiceDAL.Interfaces;
-using AbdtractRepairOrderServiceDAL.ViewModel;
+﻿using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairOrderServiceDAL.Interfaces;
+using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.ViewModel;
 
 namespace AbstractRepairOrderServiceImplementList.Implementations

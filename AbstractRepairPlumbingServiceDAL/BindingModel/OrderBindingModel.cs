@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbdtractRepairOrderServiceDAL.BindingModel
+namespace AbstractRepairOrderServiceDAL.BindingModel
 {
     public class OrderBindingModel
     {
