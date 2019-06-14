@@ -1,3 +1,4 @@
+using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceImplementList.Implementations;
 using System;
@@ -48,6 +49,7 @@ namespace AbstractRepairPlumbingWebView
             container.RegisterType<IRepairService, RepairServiceList>();
             container.RegisterType<IPlumbingService, PlumbingServiceList>();
             container.RegisterType<IMainService, MainServiceList>();
+            container.RegisterType<IStorageService, StorageServiceList>();
         }
     }
 }

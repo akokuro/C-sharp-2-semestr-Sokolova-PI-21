@@ -1,11 +1,8 @@
-﻿using AbstractRepairOrderServiceDAL.BindingModel;
+﻿using System;
+using System.Web.Mvc;
+using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace AbstractRepairPlumbingWebView.Controllers
 {

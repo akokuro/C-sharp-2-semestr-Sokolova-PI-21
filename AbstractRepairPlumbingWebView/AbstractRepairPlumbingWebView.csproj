@@ -131,11 +131,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\AddPlumbingInStorageController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PlumbingController.cs" />
     <Compile Include="Controllers\RepairController.cs" />
+    <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +191,10 @@
     <Content Include="Views\Plumbing\IndexPlumbing.cshtml" />
     <Content Include="Views\Main\IndexOrder.cshtml" />
     <Content Include="Views\Main\CreateOrder.cshtml" />
+    <Content Include="Views\Storage\CreateStorage.cshtml" />
+    <Content Include="Views\Storage\Storages.cshtml" />
+    <Content Include="Views\Storage\IndexStorage.cshtml" />
+    <Content Include="Views\AddPlumbingInStotage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -218,7 +224,7 @@
       <Project>{592ef905-f058-4972-bca4-10514385f1c1}</Project>
       <Name>AbstractRepairPlumbingOrderServiceImplementList</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbdtractRepairPlumbingOrderServiceDAL.csproj">
+    <ProjectReference Include="..\AbstractRepairPlumbingServiceDAL\AbdtractRepairPlumbingServiceDAL.csproj">
       <Project>{5230bd71-1e0a-4294-ae1c-6933b964a12b}</Project>
       <Name>AbdtractRepairPlumbingOrderServiceDAL</Name>
     </ProjectReference>

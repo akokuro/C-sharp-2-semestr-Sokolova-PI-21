@@ -43,9 +43,9 @@
   <ItemGroup>
     <Compile Include="Implementations\ClientServiceList.cs" />
     <Compile Include="Implementations\DataListSingleton.cs" />
-    <Compile Include="Implementations\RepairServiceList.cs" />
-    <Compile Include="Implementations\PlumbingServiceList.cs" />
     <Compile Include="Implementations\MainServiceList.cs" />
+    <Compile Include="Implementations\PlumbingServiceList.cs" />
+    <Compile Include="Implementations\RepairServiceList.cs" />
     <Compile Include="Implementations\StorageServiceList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

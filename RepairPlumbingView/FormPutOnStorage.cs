@@ -1,9 +1,11 @@
 ﻿using AbdtractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.BindingModel;
+using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;using Unity;
+using System.Windows.Forms;
+using Unity;
 
 namespace RepairOrderView
 {

@@ -18,7 +18,8 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
         public StorageServiceList()
         {
             source = DataListSingleton.GetInstance();
-        }
+        }
+
         public void AddElement(StorageBindingModel model)
         {
             Storage element = source.Storages.FirstOrDefault(rec => rec.StorageName == model.StorageName);
