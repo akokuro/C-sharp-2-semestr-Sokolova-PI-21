@@ -14,6 +14,7 @@ namespace AbstractRepairOrderServiceDAL.BindingModel
         public int Id { get; set; }
         public int RepairId { get; set; }
         public int PlumbingId { get; set; }
+        public String PlumbingName { get; set; }
         public int Count { get; set; }
     }
 }

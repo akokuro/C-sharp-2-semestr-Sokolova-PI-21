@@ -1,4 +1,4 @@
-﻿using AbdtractRepairOrderServiceDAL.Interfaces;
+﻿using AbstractRepairOrderServiceDAL.Interfaces;
 using AbstractRepairOrderModel;
 using AbstractRepairOrderServiceDAL.BindingModel;
 using AbstractRepairOrderServiceDAL.ViewModel;
@@ -110,7 +110,7 @@ namespace AbstractRepairOrderServiceImplementList.Implementations
                 }
                 if (source.Plumbings[i].PlumbingName == model.PlumbingName)
                 {
-                    throw new Exception("Уже есть клиент с таким ФИО");
+                    throw new Exception("Уже есть такой компонент");
                 }
             }
             source.Plumbings.Add(new Plumbing

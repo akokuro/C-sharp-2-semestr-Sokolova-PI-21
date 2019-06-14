@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractRepairPlumbingOrder
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairPlumbingView", "RepairPlumbingView\RepairPlumbingView.csproj", "{D030D989-1CBC-41F0-B540-8DFD4E716C8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractRepairPlumbingWebView", "AbstractRepairPlumbingWebView\AbstractRepairPlumbingWebView.csproj", "{3F65FEA1-CA08-4EDC-BF1B-0D206FDD5FDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D030D989-1CBC-41F0-B540-8DFD4E716C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D030D989-1CBC-41F0-B540-8DFD4E716C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D030D989-1CBC-41F0-B540-8DFD4E716C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F65FEA1-CA08-4EDC-BF1B-0D206FDD5FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F65FEA1-CA08-4EDC-BF1B-0D206FDD5FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F65FEA1-CA08-4EDC-BF1B-0D206FDD5FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F65FEA1-CA08-4EDC-BF1B-0D206FDD5FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

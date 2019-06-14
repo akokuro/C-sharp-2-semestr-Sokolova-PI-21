@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AbstractRepairOrderServiceDAL.ViewModel.RepairViewModel>
+@{
+    ViewBag.Title = "IndexRepair";
+}
+
+<h2>IndexRepair</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateRepair")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditRepair", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteRepair", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
